@@ -26,7 +26,7 @@ dist-ssr
 src/vite-env.d.ts
 package-lock.json
 
-src/graphql/graphql.ts
-.env
+# src/graphql/graphql.ts
+# .env
 # Local Netlify folder
 .netlify
