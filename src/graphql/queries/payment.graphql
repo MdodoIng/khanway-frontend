@@ -41,8 +41,8 @@ mutation createWithdrawRequest($input: CreateWithdrawRequestInput!) {
   }
 }
 
-query getCurrencyExchange($input: GetCurrencyExchangeInput!) {
-    getCurrencyExchange(input: $input) {
+query getCurrencyExchange {
+    getCurrencyExchange {
       currencyExchange {
         value
       }
@@ -69,22 +69,6 @@ query getDirectDepositPayment($input: GetPaymentStateInput!) {
     payment {
       depositorName
       totalAmount
-    }
-    error {
-      code
-      message
-    }
-  }
-}
-
-mutation createKhanteumPushCode($input: CreateKhanteumPushCodeInput!) {
-  createKhanteumPushCode(input: $input) {
-    khanteumPushCode {
-      code
-      is_used
-      is_expired
-      expired_at
-      userId
     }
     error {
       code

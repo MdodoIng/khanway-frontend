@@ -17,13 +17,3 @@ mutation openSilverEgg($input: OpenSilverEggInput!) {
         }
     }
 }
-
-mutation createSilver {
-    createSilver {
-        isSuccess
-        error {
-            code
-            message
-        }
-    }
-}

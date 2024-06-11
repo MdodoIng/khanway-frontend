@@ -70,8 +70,6 @@ mutation login($input: LoginInput!) {
             countryCode
             createdAt
             available_amount
-            isSilverEggIssued
-            isSNSVerified
         }
         error {
             code
@@ -125,10 +123,7 @@ query authVerify {
             isWhitelist
             balance
             reward_balance
-            push_balance
             isKYCVerified
-            isSilverEggIssued
-            isSNSVerified
             whitelist {
                 total_count
             }

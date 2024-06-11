@@ -2,7 +2,6 @@ query getUserHistoryByUserId($input: GetUserHistoryByIdInput!) {
     getUserHistoryByUserId(input: $input) {
         histories {
             id
-            type
             from {
                 nickname
             }

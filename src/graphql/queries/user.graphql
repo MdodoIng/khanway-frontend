@@ -10,8 +10,6 @@ query getUser($input: GetUserInput!){
             profileImage
             countryCode
             available_amount
-            isSilverEggIssued
-            isSNSVerified
         }
         error {
             code
@@ -54,6 +52,41 @@ query verifyPassword($input: VerifyPasswordInput!) {
     }
 }
 
+mutation onRegisterKYC($input: OnRegisterKYCInput!) {
+    onRegisterKYC(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation onUploadKYCImage($input: OnUploadKYCImageInput!) {
+    onUploadKYCImage(input: $input) {
+        url
+        error {
+            code
+            message
+        }
+    }
+}
+
+query getKYC {
+    getKYC {
+        kyc {
+            id
+            userId
+            status
+            createdAt
+            updatedAt
+        }
+        error {
+            code
+            message
+        }
+    }
+}
 
 mutation onUpdateSNSVerify {
     onUpdateSNSVerify {
@@ -68,16 +101,6 @@ mutation onUpdateSNSVerify {
 mutation onStartExtraStack {
     onStartExtraStack {
         success
-        error {
-            code
-            message
-        }
-    }
-}
-
-query getExtraStackCount {
-    getExtraStackCount {
-        count
         error {
             code
             message
