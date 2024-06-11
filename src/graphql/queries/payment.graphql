@@ -1,0 +1,94 @@
+mutation CheckOutOrder($input: CheckOutOrderInput!) {
+  checkOutOrder(input: $input) {
+    success
+    error {
+      code
+      message
+    }
+  }
+}
+
+mutation createMintOrder($input: CreateMintOrderInput!) {
+  createMintOrder(input: $input) {
+    orderId
+    approveUrl
+    error {
+      code
+      message
+    }
+  }
+}
+
+query getPaymentState($input: GetPaymentStateInput!) {
+  getPaymentState(input: $input) {
+    payment {
+      status
+    }
+    error {
+      code
+      message
+    }
+  }
+}
+
+mutation createWithdrawRequest($input: CreateWithdrawRequestInput!) {
+  createWithdrawRequest(input: $input) {
+    isSuccess
+    error {
+      code
+      message
+    }
+  }
+}
+
+query getCurrencyExchange($input: GetCurrencyExchangeInput!) {
+    getCurrencyExchange(input: $input) {
+      currencyExchange {
+        value
+      }
+      error {
+        code
+        message
+      }
+    }
+}
+
+mutation createBuyOrder($input: CreateBuyOrderInput!) {
+  createBuyOrder(input: $input) {
+    orderId
+    approveUrl
+    error {
+      code
+      message
+    }
+  }
+}
+
+query getDirectDepositPayment($input: GetPaymentStateInput!) {
+  getPaymentState(input: $input) {
+    payment {
+      depositorName
+      totalAmount
+    }
+    error {
+      code
+      message
+    }
+  }
+}
+
+mutation createKhanteumPushCode($input: CreateKhanteumPushCodeInput!) {
+  createKhanteumPushCode(input: $input) {
+    khanteumPushCode {
+      code
+      is_used
+      is_expired
+      expired_at
+      userId
+    }
+    error {
+      code
+      message
+    }
+  }
+}

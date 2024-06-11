@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <meta name="description"
+          content="Neftify is the complete UX & UI dashboard for NFT. Here included bids, collection, wallet, and all user setting pages including profile, application, activity, payment method, api, sign in & sign up etc.">
+
+    <!-- Favicon icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="/images/favicon32.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/add-style.css">
+    <link rel="stylesheet" href="/css/loading.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+</head>
+
+<body>
+
+<div class="pop-600">
+    <div class="top-header">
+        <p>Order</p>
+        <button class="closed"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="pop-container">
+        <div class="name">
+            <p class="tit">Product Name</p>
+            <p class="valu"></p>
+        </div>
+        <div class="name">
+            <p class="tit">Price</p>
+            <p class="valu"></p>
+        </div>
+        <div class="quantity">
+            <p class="tit">Amount</p>
+            <p class="valu"></p>
+        </div>
+        <div class="amount">
+            <p class="tit">Total Price</p>
+            <p class="valu" style="font-size: 26px;"></p>
+        </div>
+
+
+        <div class="paym-m-con">
+            <p class="tit">Choose Payment Method</p>
+
+            <div class="radio-box">
+                <input type="radio" id="pm1" name="paymentMethod">
+                <input type="radio" id="pm2" name="paymentMethod" disabled>
+                <label for="pm1" class="account" title="">
+                    <div class="img-area pm-img1"></div>
+                    <p>Wire</p>
+                    <span style="color: #000000; position: absolute;width: 100%; height: 38px; line-height: 40px; border-radius: 30px; background-color: rgb(255, 230, 0); font-size: 14px; text-align: center; bottom: -55px">
+                        Currently Available Only For Korea
+                    </span>
+                </label>
+                <label for="pm2" class="card" title="준비중 입니다.">
+                    <div class="img-area pm-img2"></div>
+                    <p>Credit Card <span class="sm-description">(Preparing)</span></p>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="depositor-con">
+            <p class="tit">Please insert purchaser name and last 4 digits of mobile number <span class="sm-description">ex) Raju1234</span></p>
+            <input type="text" class="depositor" placeholder="Raju1234">
+             <span class="error-msg" style="display: none">Doesn't fit input format</span>
+            <!-- <span class="success-msg">사용 가능한 닉네임 입니다</span> -->
+        </div>
+
+        <div class="form-check">
+            <input
+                    type="checkbox"
+                    id="chk-pay"
+                    name="chk-pay"
+                    class="form-check-input"
+                    value="false" />
+            <label class="form-check-label" for="chk-pay">
+                I have read the product description and terms of use and agree to the cancellation and <a href="/terms/en/terms-of-refund" target="_blank">Refund Policy</a>
+                <span class="sm-description">[Required]</span>
+            </label>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block w100" disabled>Confirm</button>
+
+        <div class="caution">
+            <div class="tit">Please Note</div>
+            <ul>
+                <li>When you make a payment, we check your account details every hour during business hours and authorize the payment. Please be patient for the process might take a while.</li>
+                <li>If the final payment amount does not match the account note (buyer + buyer's cell phone number last digit), the payment will be manually processed by our CS team for confirmation.</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+    <div id="loading-screen" class="loading ">
+        <div class="loading-lottie">
+            <lottie-player src="/assets/loading.json"  speed="1"
+                           style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+        </div>
+    </div>
+
+</body>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/payment.js"></script>
+</html>

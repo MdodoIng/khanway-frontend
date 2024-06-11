@@ -1,0 +1,178 @@
+query getTotalSaleAmount {
+    getTotalSaleAmount {
+        totalSaleAmount
+        error {
+            code
+            message
+        }
+    }
+}
+
+query getNFTByOwnerId($input: GetNFTByOwnerIdInput!) {
+    getNFTByOwnerId(input: $input) {
+        nfts {
+            id
+            tokenId
+            tokenURI
+            price
+            tradeCount
+            isOnSale
+            state
+            owner {
+                profileImage
+                nickname
+            }
+            metadata {
+                name
+                description
+                image
+            }
+            createdAt
+        }
+        silvers {
+            id
+            createdAt
+        }
+        golds {
+            id
+            createdAt
+        }
+        error {
+            code
+            message
+        }
+        total
+        page
+        pageSize
+    }
+}
+
+query getBlockNumber {
+    getBlockNumber {
+        value
+        error {
+            code
+            message
+        }
+    }
+}
+
+query getNFTPriceCap {
+    getNFTPriceCap {
+        nftPriceCap {
+            price
+            currentCap
+            maxCap
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+query getNFTById($input: GetNFTByIdInput!) {
+    getNFTById(input: $input) {
+        nft {
+            id
+            tokenId
+            tokenURI
+            price
+            tradeCount
+            isOnSale
+            state
+            owner {
+                id
+                profileImage
+                nickname
+            }
+            metadata {
+                name
+                description
+                image
+            }
+            history {
+                amount
+                user {
+                    profileImage
+                    nickname
+                }
+                createdAt
+            }
+            createdAt
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation updateNFTSale($input: UpdateNFTSaleInput!) {
+    updateNFTSale(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+query getMainNFTList {
+    getMainNFTList {
+        onSaleNFTList {
+            id
+            tokenId
+            tokenURI
+            price
+            tradeCount
+            isOnSale
+            state
+            owner {
+                profileImage
+                nickname
+            }
+            metadata {
+                name
+                description
+                image
+            }
+            createdAt
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+query getNFTList($input: GetNFTListInput!) {
+    getNFTList(input: $input) {
+        nfts {
+            id
+            tokenId
+            tokenURI
+            price
+            tradeCount
+            isOnSale
+            state
+            owner {
+                profileImage
+                nickname
+            }
+            metadata {
+                name
+                description
+                image
+            }
+            createdAt
+        }
+        error {
+            code
+            message
+        }
+        total
+        page
+        pageSize
+    }
+}

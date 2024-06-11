@@ -1,0 +1,28 @@
+query getUserSNS {
+    getUserSNS {
+        userSNS {
+            userId
+            isXLinked
+            isXFollowed
+            xToken
+            xId
+            telegramUsername
+            telegramUserId
+            isTelegramGroupJoined
+            isTelegramChannelJoined
+            isYoutubeSubscribed
+            referralCode
+            referralVerifyCount
+            isKhanteumJoined
+            referralUser {
+                profileImage
+                nickname
+                email
+            }
+        }
+        error {
+            code
+            message
+        }
+    }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <meta name="description"
+          content="Neftify is the complete UX & UI dashboard for NFT. Here included bids, collection, wallet, and all user setting pages including profile, application, activity, payment method, api, sign in & sign up etc.">
+    <meta name='google' value="notranslate">
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="/images/favicon32.png">
+    <!--    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/add-style.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="authincation section-padding">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-xl-5 col-md-6">
+                <div class="mini-logo text-center my-3">
+                    <a href="javascript:void(0)"><img src="/images/logo.png" alt=""/></a>
+                </div>
+                <div class="auth-form card mt-4">
+                    <div class="card-body">
+                        <div class="col-12">
+                            <img src="/images/welcome.png" alt="" class="join-img"/>
+                        </div>
+                        <h4 class="card-title mt-1 text-center mb-3">나이스 본인인증이 완료되었습니다!</h4>
+                        <div class="col-12">
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary btn-block w100">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script>
+    $('body > div > div > div > div > div.auth-form.card.mt-4 > div > div:nth-child(3) > div > button').on('click', () => {
+        const query = new URLSearchParams(location.search);
+        localStorage.setItem('nice_auth', query.get('data'));
+        window.open('','_self').close();
+    })
+</script>
+</html>

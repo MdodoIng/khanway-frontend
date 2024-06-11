@@ -1,0 +1,29 @@
+mutation openGoldEgg($input: OpenGoldEggInput!) {
+    openGoldEgg(input: $input) {
+        isSuccess
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation openSilverEgg($input: OpenSilverEggInput!) {
+    openSilverEgg(input: $input) {
+        isSuccess
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation createSilver {
+    createSilver {
+        isSuccess
+        error {
+            code
+            message
+        }
+    }
+}

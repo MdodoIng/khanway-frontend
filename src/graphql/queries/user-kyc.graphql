@@ -1,0 +1,50 @@
+query getEncryptData {
+    getEncryptData {
+        tokenVersionId
+        encodeData
+        integrity
+        error {
+            message
+            code
+        }
+    }
+}
+
+query getKYC {
+    getKYC {
+        kyc {
+            id
+            userId
+            status
+            rejectMessage
+            createdAt
+            updatedAt
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+
+mutation onRegisterKYC($input: OnRegisterKYCInput!) {
+    onRegisterKYC(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation onUploadKYCImage($input: OnUploadKYCImageInput!) {
+    onUploadKYCImage(input: $input) {
+        url
+        error {
+            code
+            message
+        }
+    }
+}
+

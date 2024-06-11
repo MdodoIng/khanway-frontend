@@ -1,0 +1,30 @@
+query getUserHistoryByUserId($input: GetUserHistoryByIdInput!) {
+    getUserHistoryByUserId(input: $input) {
+        histories {
+            id
+            type
+            from {
+                nickname
+            }
+            to {
+                nickname
+            }
+            nft {
+                state
+                tokenId
+                metadata {
+                    name
+                    description
+                    image
+                }
+            }
+            amount
+            detailType
+            message
+            createdAt
+        }
+        total
+        page
+        pageSize
+    }
+}

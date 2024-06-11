@@ -1,0 +1,174 @@
+mutation authSMSSend($input: AuthSMSSendInput!) {
+    authSMSSend(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation authSMSVerify($input: AuthSMSVerifyInput!) {
+    authSMSVerify(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+query authMailVerify($input: AuthMailVerifyInput!) {
+    authMailVerify(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation authMailSend($input: AuthMailSendInput!) {
+    authMailSend(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+query nicknameVerify($input: NicknameVerifyInput!) {
+    nicknameVerify(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation signUp($input: SignUpInput!) {
+    signUp(input: $input) {
+        id
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation login($input: LoginInput!) {
+    login(input: $input) {
+        access_token
+        user {
+            id
+            nickname
+            email
+            profileImage
+            phoneNumber
+            countryCode
+            createdAt
+            available_amount
+            isSilverEggIssued
+            isSNSVerified
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation authFindSMSSend($input: AuthFindSMSSendInput!) {
+    authFindSMSSend(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation authFindSMSVerify($input: AuthFindSMSVerifyInput!) {
+    authFindSMSVerify(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation authFindNewPassword($input: AuthFindNewPasswordInput!) {
+    authFindNewPassword(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+query authVerify {
+    authVerify {
+        isVerified
+        user {
+            id
+            nickname
+            email
+            profileImage
+            phoneNumber
+            countryCode
+            createdAt
+            available_amount
+            isWhitelist
+            balance
+            reward_balance
+            push_balance
+            isKYCVerified
+            isSilverEggIssued
+            isSNSVerified
+            whitelist {
+                total_count
+            }
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+query authFindEmail($input: AuthFindEmailInput!) {
+    authFindEmail(input: $input) {
+        user {
+            email
+            createdAt
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+query authMailResetURL($input: AuthMailResetURLInput!) {
+    authMailResetURL(input: $input) {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+query authTokenVerify($input: AuthTokenVerifyInput!) {
+    authTokenVerify(input: $input) {
+        verify
+        error {
+            code
+            message
+        }
+    }
+}

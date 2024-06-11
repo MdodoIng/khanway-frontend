@@ -1,0 +1,86 @@
+query getUser($input: GetUserInput!){
+    getUser(input: $input){
+        user {
+            id
+            email
+            nickname
+            password
+            createdAt
+            phoneNumber
+            profileImage
+            countryCode
+            available_amount
+            isSilverEggIssued
+            isSNSVerified
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation editUser($input: EditUserInput!){
+    editUser(input : $input){
+        user{
+            email
+            nickname
+            countryCode
+        }
+        error {
+            code
+            message
+        }
+    }
+}
+
+query findUserByNickname($input: FindUserByNicknameInput!){
+    findUserByNickname(input: $input){
+        user
+        error {
+            code
+            message
+        }
+    }
+}
+
+query verifyPassword($input: VerifyPasswordInput!) {
+    verifyPassword(input: $input) {
+        verify
+        error {
+            code
+            message
+        }
+    }
+}
+
+
+mutation onUpdateSNSVerify {
+    onUpdateSNSVerify {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+mutation onStartExtraStack {
+    onStartExtraStack {
+        success
+        error {
+            code
+            message
+        }
+    }
+}
+
+query getExtraStackCount {
+    getExtraStackCount {
+        count
+        error {
+            code
+            message
+        }
+    }
+}
