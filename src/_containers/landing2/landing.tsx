@@ -59,6 +59,7 @@ const responsive = {
   },
 };
 
+
 const LandingContainer2 = () => {
   useStylesheet("/css/landing.css");
   useStylesheet("/css/landing-add3.css");
