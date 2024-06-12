@@ -80,8 +80,8 @@ const LandingFooter = () => {
                 />
                 <Link
                   to="/minting"
-                  className=""
-                
+                  className="btn btn-grad mt24"
+                  style={{ paddingInline: "0px", maxWidth: "270px" }}
                   data-aos="zoom-in"
                 >
                   {t(`footer.menu10`)}
@@ -148,7 +148,17 @@ const LandingFooter = () => {
               </li>
             </ul>
           </div>
-       
+          {/* <div className="footer-bottom-privacy">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <div className="footer-bottom-text">Terms</div>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <div className="footer-bottom-text">Privacy</div>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <div className="footer-bottom-text">Policy and Cookie Policy</div>
+            </a>
+          </div> */}
         </div>
       </div>
     </>

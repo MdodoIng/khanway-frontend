@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import en from "./resource/en.tsx";
 import ko from "./resource/ko.tsx";
 
-export const getLanguage = () => {
+const getLanguage = () => {
     if (localStorage.getItem('khanway_language'))
         return localStorage.getItem('khanway_language') || 'en';
     else if (navigator.language.includes('ko')) {

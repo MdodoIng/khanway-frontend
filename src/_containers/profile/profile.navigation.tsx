@@ -21,12 +21,16 @@ const ProfileNavigationComponent = () => {
                     <li className={`${path.pathname.includes('/profile/wallet') && 'active'}`}>
                         <Link to="/profile/wallet">{t(`profile_navigation.menu4`)}</Link>
                     </li>
-                    <li className={`${path.pathname.includes('/profile/kyc') && 'active'}`}>
-                        <Link to="/profile/kyc">{t(`profile_navigation.menu10`)}</Link>
+                    {
+                        import.meta.env.MODE !== 'prod' &&
+                        <li className={`${path.pathname.includes('/profile/kyc') && 'active'}`}>
+                            <Link to="/profile/kyc">{t(`profile_navigation.menu8`)}</Link>
+                        </li>
+                    }
+
+                    <li className={`${path.pathname.includes('/profile/setting') && 'active'}`}>
+                        <Link to="/profile/setting">{t(`profile_navigation.menu5`)}</Link>
                     </li>
-                    {/*<li className={`${path.pathname.includes('/profile/setting') && 'active'}`}>*/}
-                    {/*    <Link to="/profile/setting">{t(`profile_navigation.menu5`)}</Link>*/}
-                    {/*</li>*/}
                 </ul>
             </div>
         </div>

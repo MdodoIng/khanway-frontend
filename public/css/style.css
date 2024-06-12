@@ -12715,7 +12715,7 @@ strong {
   }
 
   .dark-theme .header::after {
-    top: 92px;
+    top: 71px;
   }
 
   .header.landing a {
@@ -12732,6 +12732,8 @@ strong {
 .header.landing .brand-logo img {
   -webkit-filter: none;
   filter: none;
+  margin-right: 10px;
+  margin-top: 6px;
 }
 .header.landing .brand-logo span {
   display: block;
@@ -13011,8 +13013,8 @@ strong {
 
 .navigation .navbar ul > li > a {
   font-size: 16px;
-  font-weight: 800;
-  color: #00c2ce !important;
+  font-weight: 700;
+  color: #99a3ba !important;
   transition: all 0.2s ease-in-out;
 }
 

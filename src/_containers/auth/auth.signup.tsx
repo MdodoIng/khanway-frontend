@@ -1,10 +1,10 @@
 import {useForm} from 'react-hook-form';
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {onToggleEmailModalAction, onToggleLoadingModalAction} from "@action/modal.action.tsx";
 import {useAuthMailSendMutation, useNicknameVerifyLazyQuery, useSignUpMutation} from "@graphql/graphql.ts";
 import {RootState} from "@reducer/root.reducer.tsx";
-import {Link, useNavigate, useSearchParams} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ValidComponent from "@component/valid.tsx";
 import {setEmailAction, setInitialStateAction} from "@action/auth.action.tsx";
 import {SignUpFormType} from "@type/auth.type.tsx";
@@ -16,10 +16,6 @@ import {countryCodes} from "@helper/country.codes.tsx";
 import {selectStyles} from "@container/auth/auth.style.tsx";
 
 const SignupContainer = () => {
-    const [searchParams] = useSearchParams();
-    const referralCode = searchParams.get('referralCode');
-
-    const selectRef = useRef<any>()
     const {t} = useTranslation();
     const navigation = useNavigate();
     const dispatch = useDispatch();
@@ -72,13 +68,6 @@ const SignupContainer = () => {
         else
             setIsEmailValid(true);
     }, [watch("email")]);
-
-    useEffect(() => {
-        if (navigator.language.includes('ko')) {
-            selectRef.current.setValue(countryCodes[117]);
-            setValue('countryCode', countryCodes[117].value)
-        }
-    }, []);
 
     // useEffect(() => {
     //     if (!phoneVerified)
@@ -162,8 +151,7 @@ const SignupContainer = () => {
                         email: data.email,
                         nickname: data.nickname,
                         password: data.password,
-                        countryCode: data.countryCode,
-                        referralCode: referralCode
+                        countryCode: data.countryCode
                     }
                 }
             }).then(response => {
@@ -227,7 +215,7 @@ const SignupContainer = () => {
                                             </div>
                                             <div className="col-12 mb-3 rela">
                                                 <label className="form-label">{t(`auth_sms.country_title`)}</label>
-                                                <Select ref={selectRef} placeholder={t(`auth_sms.country_select`)} options={countryCodes} styles={selectStyles} onChange={(e: any) => setValue('countryCode', e.value)}/>
+                                                <Select placeholder={t(`auth_sms.country_select`)} options={countryCodes} styles={selectStyles} onChange={(e: any) => setValue('countryCode', e.value)}/>
                                             </div>
 
                                             <div className="col-12 mb-3 rela">

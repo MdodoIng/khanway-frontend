@@ -8,7 +8,6 @@ const ProfileInfoComponent = () => {
     const {t} = useTranslation();
     const {user} = useSelector((state: RootState) => state.AuthReducer);
 
-
     return (
         <div className="row">
             <div className="col-xxl-12">
@@ -21,9 +20,8 @@ const ProfileInfoComponent = () => {
                         <form className="row">
                             <div className="col-12">
                                 <div className="user-img" style={{background: ''}}>
-                                    <img
-                                        src={user?.profileImage === '/images/anonymous.png' ? '/images/profile-img-bg.svg' : user!.profileImage!}
-                                        alt="" className="pf-img"/>
+                                    <img src={user?.profileImage === '/images/anonymous.png' ? '/images/profile-img-bg.svg' : user!.profileImage!}
+                                         alt="" className="pf-img"/>
                                 </div>
                             </div>
                             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
@@ -63,16 +61,20 @@ const ProfileInfoComponent = () => {
                         </form>
                     </div>
                 </div>
-                <div className="sns-acc">
-                    <div className="sns-acc-txt">
-                        * 마켓에서 NFW구매시 옵션을 지급받으려면 <span className="txt-primary">SNS인증</span>이 완료되어야 합니다.
+                {
+                    import.meta.env.MODE !== 'prod' &&
+                    <div className="sns-acc">
+                        <div className="sns-acc-txt">
+                            * 마켓에서 NFW구매시 옵션을 지급받으려면 <span className="txt-primary">SNS인증</span>이 완료되어야 합니다.
+                        </div>
+                        {
+                            user?.isSNSVerified
+                                ? <a className="btn btn-primary disabled">인증완료</a>
+                                : <Link className="btn btn-primary" to={'/sns/complete'}>SNS 인증하기</Link>
+                        }
                     </div>
-                    {
-                        user?.isSNSVerified
-                            ? <a className="btn btn-primary disabled">인증완료</a>
-                            : <Link className="btn btn-primary" to={'/sns/verify'}>SNS 인증하기</Link>
-                    }
-                </div>
+                }
+
             </div>
         </div>
     )

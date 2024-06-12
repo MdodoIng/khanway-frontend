@@ -40,7 +40,7 @@ const KYCStep1 = (props: KYCStep1Props) => {
             </form>
 
             <div className="mt50 d-grid gap-2">
-                <button type="button" className={`btn btn-primary mr-2 ${getButtonState()}`} onClick={() => props.onSetStep(3)}>{t(`kyc.btn`)}</button>
+                <button type="button" className={`btn btn-primary mr-2 ${getButtonState()}`} onClick={() => props.onSetStep(2)}>{t(`kyc.btn`)}</button>
             </div>
         </div>
     )

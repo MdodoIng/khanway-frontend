@@ -29,7 +29,10 @@ const DefaultFooter = () => {
                                         <ul>
                                             <li><Link to="/">{t(`footer.menu1`)}</Link></li>
                                             <li><Link to="/minting">{t(`footer.menu2`)}</Link></li>
-                                            <li><Link to="/market">{t(`footer.menu3`)}</Link></li>
+                                            {
+                                                import.meta.env.MODE !== 'prod' &&
+                                                <li><Link to="/market">{t(`footer.menu3`)}</Link></li>
+                                            }
                                             <li><Link to={`/terms/${localStorage.getItem('khanway_language') ?? 'en'}/terms-of-service`} target={'_blank'}>{t(`footer.menu7`)}</Link></li>
                                             <li><Link to={`/terms/${localStorage.getItem('khanway_language') ?? 'en'}/terms-of-nfw`} target={'_blank'}>{t(`footer.menu9`)}</Link></li>
                                         </ul>
@@ -38,11 +41,8 @@ const DefaultFooter = () => {
                                         <ul>
                                             <li><Link to="/profile/nfw">{t(`footer.menu4`)}</Link></li>
                                             <li><Link to="/profile">{t(`footer.menu5`)}</Link></li>
-                                            {/*<li><Link to="/profile/setting">{t(`footer.menu6`)}</Link></li>*/}
-                                            <li><Link
-                                                to={`/terms/${localStorage.getItem('khanway_language') ?? 'en'}/privacy-policy`}
-                                                target={'_blank'}>{t(`footer.menu8`)}</Link></li>
-                                            <li><Link to={'/contactus'}>{t(`footer.menu11`)}</Link></li>
+                                            <li><Link to="/profile/setting">{t(`footer.menu6`)}</Link></li>
+                                            <li><Link to={`/terms/${localStorage.getItem('khanway_language') ?? 'en'}/privacy-policy`} target={'_blank'}>{t(`footer.menu8`)}</Link></li>
                                         </ul>
                                     </div>
                                 </div>

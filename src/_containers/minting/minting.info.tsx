@@ -28,7 +28,7 @@ const MintingInfo = (props: MintingInfoProps) => {
                 </div>
                 <div className="rightbox">
                     <span>{t(`minting.block_start`)}</span>
-                    <h3 className="">#55833963</h3>
+                    <h3 className="">#84617986</h3>
                 </div>
             </div>
         </>

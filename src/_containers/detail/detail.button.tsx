@@ -1,13 +1,9 @@
-import {Nft, NftIsOnSale, useUpdateNftSaleMutation} from "@graphql/graphql.ts";
+import {Nft, NftIsOnSale, useCreateBuyOrderMutation, useUpdateNftSaleMutation} from "@graphql/graphql.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "@reducer/root.reducer.tsx";
 import Swal from "sweetalert2";
 import {onToggleLoadingModalAction} from "@action/modal.action.tsx";
 import {t} from "i18next";
-import {useEffect, useState} from "react";
-import {onErrorSwal, onSuccessSwal} from "@helper/swal.handler.tsx";
-import {useNavigate} from "react-router-dom";
-import {getErrorMessage} from "@helper/error.message.tsx";
 
 export type DetailButtonProps = {
     nft: Nft;
@@ -15,48 +11,9 @@ export type DetailButtonProps = {
 
 const DetailButton = ({nft}: DetailButtonProps) => {
     const dispatch = useDispatch();
-    const [popupWindow, setPopupWindow] = useState<Window | null>(null);
     const {user} = useSelector((state: RootState) => state.AuthReducer);
-    const navigate = useNavigate();
-    // const [onCreateBuyOrder] = useCreateBuyOrderMutation();
+    const [onCreateBuyOrder] = useCreateBuyOrderMutation();
     const [onUpdateNFTOnSale] = useUpdateNftSaleMutation();
-
-    const openPopup = () => {
-        dispatch(onToggleLoadingModalAction(true));
-        const apiPrefix = encodeURIComponent(import.meta.env.VITE_APP_LOCAL_URL);
-        const name = encodeURIComponent(`KhanHwang's EGG #${nft.tokenId}`);
-        // const url = `/popup/${localStorage.getItem('khanway_language') ?? 'en'}/payment.html?type=MINT&name=KhanHwang's EGG $${selectedAmount}&currency_unit=${currencyUnit}&currency_value=${currency?.value}&amount=${amount}&count=${count}&price=${selectedAmount}&apiPrefix=${apiPrefix}`;
-        //
-        const url = `/popup/${localStorage.getItem('khanway_language') ?? 'en'}/payment.html?type=BUY&name=${name}&currency_unit=${'USD'}&currency_value=${1300}&amount=${nft.price}&count=${1}&price=${nft.price}&nftId=${nft.id}&apiPrefix=${apiPrefix}`;
-        const newWindow = window.open(url, '_blank', `width=${screen.width}, height=${screen.height}, fullscreen=yes`,);
-        newWindow?.addEventListener('message', receiveMessage);
-        setPopupWindow(newWindow);
-    }
-
-    useEffect(() => {
-        if (!popupWindow)
-            return;
-
-        return () => {
-            popupWindow?.removeEventListener('message', receiveMessage);
-            setPopupWindow(null);
-        }
-    }, [])
-
-    const receiveMessage = (event: any) => {
-        if (event.origin !== import.meta.env.VITE_APP_LOCAL_URL)
-            return;
-        if (event.data === 'success') {
-            onSuccessSwal(t('detail.buy_request_success'), t('detail.buy_request_success_msg'), undefined,undefined,() => navigate('/profile/history', { replace: true}));
-        } else if (event.data === 'fail') {
-            onErrorSwal(t('detail.buy_request_fail'), t('detail.buy_request_fail_msg'), undefined,undefined,() => window.location.reload());
-        }
-        dispatch(onToggleLoadingModalAction(false));
-        popupWindow?.removeEventListener('message', receiveMessage);
-        setPopupWindow(null);
-    }
-
-
 
     const onClickBuy = () => Swal.fire({
         icon: 'question',
@@ -67,41 +24,38 @@ const DetailButton = ({nft}: DetailButtonProps) => {
         cancelButtonText: 'No'
     }).then((result) => {
         if (result.isConfirmed) {
-            // dispatch(onToggleLoadingModalAction(true));
-            openPopup();
-            // onCreateBuyOrder({
-            //     variables: {
-            //         input: {
-            //             nftId: nft.id!
-            //         }
-            //     }
-            // }).then(response => {
-            //     if (response.data?.createBuyOrder.error) {
-            //         dispatch(onToggleLoadingModalAction(false));
-            //         Swal.fire({
-            //             icon: 'error',
-            //             title: 'ERROR',
-            //             text: response.data?.createBuyOrder.error.message!
-            //         })
-            //     }
-            //     else
-            //         window.location.href = response.data!.createBuyOrder.approveUrl!
-            //     return;
-            // }).catch((error) => {
-            //     console.log(error)
-            //     dispatch(onToggleLoadingModalAction(false));
-            //     Swal.fire({
-            //         icon: "error",
-            //         title: "ERROR",
-            //         text: error.message
-            //     })
-            // })
+            dispatch(onToggleLoadingModalAction(true));
+            onCreateBuyOrder({
+                variables: {
+                    input: {
+                        nftId: nft.id!
+                    }
+                }
+            }).then(response => {
+                if (response.data?.createBuyOrder.error) {
+                    dispatch(onToggleLoadingModalAction(false));
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ERROR',
+                        text: response.data?.createBuyOrder.error.message!
+                    })
+                }
+                else
+                    window.location.href = response.data!.createBuyOrder.approveUrl!
+                return;
+            }).catch((error) => {
+                console.log(error)
+                dispatch(onToggleLoadingModalAction(false));
+                Swal.fire({
+                    icon: "error",
+                    title: "ERROR",
+                    text: error.message
+                })
+            })
         }
     })
 
     const onClickSale = (state: NftIsOnSale) => {
-        if (nft.tradeCount === 0)
-            return onErrorSwal(t('detail.trade_count_over_title'), t('detail.trade_count_over_msg'));
         Swal.fire({
             title: t('detail.update_sale_title'),
             text: t('detail.update_sale_msg'),
@@ -112,13 +66,11 @@ const DetailButton = ({nft}: DetailButtonProps) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 if (user?.isKYCVerified === false) {
-                    onErrorSwal(
-                        'ERROR',
-                        t('detail.kyc_not_verified'),
-                        undefined,
-                        undefined,
-                        () => navigate('/profile/kyc', {replace: true})
-                    );
+                    Swal.fire({
+                        icon: 'error',
+                        titleText: 'ERROR',
+                        html: t('detail.kyc_not_verified')
+                    })
                     return;
                 } else
                     onUpdateNFTOnSale({
@@ -129,11 +81,18 @@ const DetailButton = ({nft}: DetailButtonProps) => {
                             }
                         }
                     }).then(response => {
-                        console.log('response: ', response)
                         if (response.data?.updateNFTSale.error)
-                            onErrorSwal('ERROR', getErrorMessage(response.data.updateNFTSale.error.code?.toString() ?? ''));
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "ERROR",
+                                    text: response.data?.updateNFTSale.error.message!
+                                })
                         else
-                            onSuccessSwal('SUCCESS', t('detail.update_sale_success'), undefined, undefined, () => window.location.reload());
+                            Swal.fire({
+                                icon: "success",
+                                title: "SUCCESS",
+                                text: t('detail.update_sale_success')
+                            }).then(() => window.location.reload())
                         return;
                     }).catch((error) => {
                         console.log(error)
@@ -159,8 +118,6 @@ const DetailButton = ({nft}: DetailButtonProps) => {
             return <button className="btn btn-primary" onClick={() => onClickSale(NftIsOnSale.NotOnSale)}>{t('detail.stop_sale')}</button> // 판매 중단
         else if (nft.isOnSale === NftIsOnSale.NotOnSale)
             return <button className="btn btn-primary" onClick={() => onClickSale(NftIsOnSale.OnSale)}>{t('detail.start_sale')}</button> // 판매 시작
-        else if (nft.tradeCount === 0)
-            return <button className="btn btn-primary" disabled={true}>{t('detail.trade_count_over_btn')}</button> // 판매 시작
         else
             return <button className="btn btn-primary" disabled={true}>{t('detail.pending_sale')}</button> // 결제 진행중
     } else if (!user) { // 로그인 안한 경우

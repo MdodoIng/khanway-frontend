@@ -4,11 +4,9 @@ import {useDispatch} from "react-redux";
 import {onToggleLoadingModalAction} from "@action/modal.action.tsx";
 import Swal from "sweetalert2";
 import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
 
 const CompleteContainer = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { t } = useTranslation();
     const [updateSNSVerify] = useOnUpdateSnsVerifyMutation();
     const [startExtraStack] = useOnStartExtraStackMutation();
@@ -47,7 +45,7 @@ const CompleteContainer = () => {
                         icon: 'success',
                         title: t('sns_complete.success_title'),
                         text: t('sns_complete.success_text')
-                    }).then(() => navigate('/profile'))
+                    })
                 }
             }
         } catch (e: any) {

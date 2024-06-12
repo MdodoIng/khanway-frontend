@@ -117,12 +117,6 @@ const EnTermsOfServiceContainer = () => {
                                                 transferred the rights of the Issuer to the 'NFW Holder' even if the NFW
                                                 is transferred to a third party.
                                         </li>
-
-                                        <li>The Company notifies its members by e-mail of the delivery date of the order
-                                                in relation to the NFW. Members may receive the NFW ordered on the
-                                                delivery date notified by e-mail. The Company shall be responsible for
-                                                properly notifying its members of any changes to the delivery date.
-                                        </li>
                                 </ol>
                                 <p>&nbsp;</p><p>&nbsp;</p>
 
@@ -320,9 +314,7 @@ const EnTermsOfServiceContainer = () => {
                                                 handled on the Khanway Marketplace. However, when certain NFWs are
                                                 issued or distributed in only one country, each trading entity may
                                                 designate and freely use its own unique account. </p>
-                                        <p>④ For each NFW transaction on Khanway Marketplace, if the Company and its overseas subsidiaries are subject to withholding tax obligations arising from the purchase and sale of NFW in the country, the Company and its overseas subsidiaries will fulfill such obligations and notify the Member of the withholding tax details.</p>
-                                        <p>⑤ The Member entrusts the Company with a representative account only in connection with the deposit and withdrawal of royalties that necessarily arise after all rights transactions. However, the right to place transfer orders and transactions for NFW for each counterparty is exercised directly by the Member using electronic means at the Member's sole discretion.</p>
-                                        <p>⑥ In case where the G20's policy on virtual assets is finalized and each
+                                        <p>④ In case where the G20's policy on virtual assets is finalized and each
                                                 country's laws on CBDC transactions and international encryption are
                                                 finalized, we may block cryptocurrency payment systems in addition to
                                                 the fiat currencies specified in paragraphs ① through ③ of this Article.
@@ -330,9 +322,6 @@ const EnTermsOfServiceContainer = () => {
                                                 implementation of the service through changes and updates to the terms
                                                 and conditions.
                                         </p>
-                                        <p>⑦ Please note that in principle, members are responsible for taxation and reporting obligations for income generated from the purchase and sale transactions between members on the Kanway Marketplace, and in the case of overseas transactions, the tax laws and policies of each country may change from time to time.</p>
-                                        <p>⑧ When selling products obtained as developer rewards options, a certain percentage of royalties and push charging amount specified in the special terms and conditions for each product will be deducted and accumulated in the Kantum app. Among these, the push charging amount can only be used for exercising push notifications in the Khanteum app and cannot be withdrawn. Therefore, it is necessary to join the Khanteum app in order to exercise the relevant rights, as it is not possible to charge if you are not a member of the Khanteum app.</p>
-
 
                                 </ul>
                                 <p>&nbsp;</p><p>&nbsp;</p>

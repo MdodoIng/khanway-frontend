@@ -1,4 +1,5 @@
 import ProfileTitleComponent from "@container/profile/profile.title.tsx";
+import {t} from "i18next";
 import ProfileNavigationComponent from "@container/profile/profile.navigation.tsx";
 import {useEffect, useState} from "react";
 import KycHeader from "@container/profile/kyc/kyc.header.tsx";
@@ -23,14 +24,8 @@ import {
 } from "@graphql/graphql.ts";
 import Swal from "sweetalert2";
 import Loading from "@container/_common/loading.tsx";
-import {onErrorSwal} from "@helper/swal.handler.tsx";
-import {getErrorMessage} from "@helper/error.message.tsx";
-import KycStep11 from "@container/profile/kyc/kyc-step11.tsx";
-import {useTranslation} from "react-i18next";
 
 const KYCContainer = () => {
-    const {t} = useTranslation()
-
     const [step, setStep] = useState<number>(0);
     const [firstName, setFirstName] = useState<string>('');
     const [lastName, setLastName] = useState<string>('');
@@ -50,16 +45,10 @@ const KYCContainer = () => {
     const [onUploadKYCImage] = useOnUploadKycImageMutation();
 
     useEffect(() => {
-        localStorage.removeItem('nice_auth')
-    }, [])
-
-    useEffect(() => {
         if (data?.getKYC.kyc?.status === UserKycStatus.Pending)
             setStep(9)
         else if (data?.getKYC.kyc?.status === UserKycStatus.Approved)
             setStep(10)
-        else if (data?.getKYC.kyc?.status === UserKycStatus.Rejected)
-            setStep(11)
     }, [data])
 
     const onUploadImage = (file: any, type: string) => {
@@ -105,18 +94,18 @@ const KYCContainer = () => {
                     documentType: documentType,
                     documentFrontImage: documentFrontImage!,
                     documentBackImage: documentBackImage,
-                    bankStatementImage: bankStatementImage,
-                    niceData: localStorage.getItem('nice_auth')
+                    bankStatementImage: bankStatementImage
                 }
             }
         }).then((response) => {
-            if (!response.data)
-                onErrorSwal(t('common.error'), getErrorMessage('NO_RESPONSE_DATA'), undefined, undefined, () => window.location.reload());
-            else if (response.data?.onRegisterKYC.error)
-                onErrorSwal(t('common.error'), getErrorMessage(response.data.onRegisterKYC.error.code!), undefined, undefined, () => window.location.reload());
-            else if (response.data?.onRegisterKYC.success)
+            if (response.data?.onRegisterKYC.success)
                 setStep(9);
-            localStorage.removeItem('nice_auth');
+            else
+                Swal.fire({
+                    icon: 'error',
+                    title: t(`kyc.err_title`),
+                    text: t(`kyc.err_des`),
+                })
             return;
         }).catch((_e) => {
             Swal.fire({
@@ -132,9 +121,9 @@ const KYCContainer = () => {
         switch (step) {
             case 0:
                 return <KYCStep0 onSetStep={setStep} />;
-            case 2:
-                return <KYCStep1 onSetStep={setStep} firstName={firstName} lastName={lastName} setFirstName={setFirstName} setLastName={setLastName} />;
             case 1:
+                return <KYCStep1 onSetStep={setStep} firstName={firstName} lastName={lastName} setFirstName={setFirstName} setLastName={setLastName} />;
+            case 2:
                 return <KYCStep2 onSetStep={setStep} setCountry={setCountry} country={country} />;
             case 3:
                 return <KYCStep3 onSetStep={setStep} dateOfBirth={dateOfBirth} setDateOfBirth={setDateOfBirth} />;
@@ -147,15 +136,14 @@ const KYCContainer = () => {
             case 6:
                 return <KYCStep6 onSetStep={setStep} documentIssueCountryCode={documentIssueCountryCode} setDocumentIssueCountryCode={setDocumentIssueCountryCode} documentType={documentType} setDocumentType={setDocumentType} />;
             case 7:
-                return <KYCStep7 documentType={documentType} onSetStep={setStep} documentBackImage={documentBackImage} documentFrontImage={documentFrontImage} onUploadImage={onUploadImage} />;
+                return <KYCStep7 onSetStep={setStep} documentBackImage={documentBackImage} documentFrontImage={documentFrontImage} onUploadImage={onUploadImage} />;
             case 8:
                 return <KYCStep8 onSubmit={onSubmit} bankStatementImage={bankStatementImage} onUploadImage={onUploadImage} />;
             case 9:
                 return <KYCStep9  />;
             case 10:
                 return <KYCStep10 />;
-            case 11:
-                return <KycStep11 setStep={setStep} userKYC={data?.getKYC.kyc!} />;
+
         }
     }
 
