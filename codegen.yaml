@@ -1,4 +1,4 @@
-schema: ${VITE_APP_API_PREFIX}/graphql
+schema: "http://dev.khanway.com/graphql"
 documents: "src/graphql/queries/*.graphql"
 config:
   scalars:

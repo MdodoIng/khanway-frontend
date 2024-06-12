@@ -27,8 +27,7 @@ export function PrivateRoute({ children }: PrivateRouteProps) {
 
     const getContainer = () => {
         if (isVerified && path.pathname.includes('login')) return <Navigate to="/"/>;
-        else if (!isVerified && (path.pathname.includes('sns/complete') || path.pathname.includes('sns/verify') || path.pathname.includes('event/reward'))) return <Navigate to="/auth/login"/>;
-        else if (!path.pathname.includes('auth/signup')) return children;
+        else if (!isVerified && path.pathname.includes('sns')) return <Navigate to="/"/>;
         else if (!path.pathname.includes('profile')) return children;
         else if (!isVerified) return <Navigate to="/"/>;
         else return children;

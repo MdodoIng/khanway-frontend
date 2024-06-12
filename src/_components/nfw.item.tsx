@@ -9,10 +9,15 @@ export type NFWItemProps = {
 const NFWItem = ({item}: NFWItemProps) => {
     const navigate = useNavigate();
 
-    const onClickItem = () => navigate(`/market/detail/${item.id}`, {replace: true});
+    const onClickItem = () => {
+        if (import.meta.env.MODE !== 'prod')
+            return navigate(`/market/detail/${item.id}`, {replace: true});
+        else
+            return;
+    }
 
     return (
-        <div className="mynft-box" style={{cursor: 'pointer'}} onClick={() => onClickItem()}>
+        <div className="mynft-box" style={{cursor: import.meta.env.MODE !== 'prod' ? 'pointer' : 'default'}} onClick={() => onClickItem()}>
             <div className={`imgbox ${item.isOnSale === NftIsOnSale.OnSale ? 'sell' : ''}`}>
                 <img src={item.metadata?.image!} alt=""  className="nft-img"/>
             </div>
@@ -25,7 +30,7 @@ const NFWItem = ({item}: NFWItemProps) => {
                         <img src={item.owner!.profileImage!} alt=""/>
                         <div className="txtbox">
                             <p className="title">{t(`profile_nfw_item.card1`)}</p>
-                            <p className="value" style={{ overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '47px'}}>{item.owner?.nickname}</p>
+                            <p className="value">{item.owner?.nickname}</p>
                         </div>
                     </div>
                     <div className="current">

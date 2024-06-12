@@ -46,7 +46,6 @@ const EnTermsOfNewContainer = () => {
                             which has been
                             serviced as a mobile app for 5 years in Korea, and is named " Khanhwang’s Eggs".
                         </li>
-                        <li>When selling products obtained as developer rewards options, 8% of the total dollar amount will be deducted as creator fee (royalties), and 5% will be charged to each individual's account under the name of Khanteum Push.</li>
                         <li>Nature and Price of Goods (Membership)
                             <table border={1} cellPadding="0" cellSpacing="0"
                                    style={{width: "100%;", maxWidth: "900px;", marginTop: "18px;"}}>

@@ -3,7 +3,6 @@ import {t} from "i18next";
 import {countryCodes} from "@helper/country.codes.tsx";
 import {selectStyles} from "@container/profile/kyc/kyc-step2.style.tsx";
 import {UserKycDocumentType} from "@graphql/graphql.ts";
-import {useEffect, useRef} from "react";
 
 export type KYCStep6Props = {
     onSetStep: (step: number) => void;
@@ -14,17 +13,10 @@ export type KYCStep6Props = {
 }
 
 const KYCStep6 = (props: KYCStep6Props) => {
-    const selectRef = useRef<any>();
-
-    useEffect(() => {
-        if (navigator.language.includes('ko')) {
-            props.setDocumentIssueCountryCode(countryCodes[117]);
-            selectRef.current.setValue(countryCodes[117]);
-        }
-    }, []);
-
-
-    console.log('Document Type: ', props.documentType)
+    const getButtonState = () => {
+        if (props.documentIssueCountryCode.value.length === 0)
+            return 'disabled';
+    }
 
     return (
         <div className="kyc-area">
@@ -41,7 +33,6 @@ const KYCStep6 = (props: KYCStep6Props) => {
                 <div className="description-txt">
                     <Select placeholder={t(`auth_sms.country_select`)} options={countryCodes}
                             styles={selectStyles}
-                            ref={selectRef}
                             onChange={(e: any) => props.setDocumentIssueCountryCode(e)} />
                 </div>
 
@@ -49,9 +40,11 @@ const KYCStep6 = (props: KYCStep6Props) => {
                     <p className="form-label">{t(`kyc.step6_type`)}</p>
                 </div>
 
-                <div className="select-type" >
-                    <label className={`select-item ${props.documentType === UserKycDocumentType.IdCard && 'check'}`} onClick={() => props.setDocumentType(UserKycDocumentType.IdCard)}>
-                        <input type="radio" name="optionsRadios" id="" value="ID Card"/>
+                <div className="select-type">
+                    <label className="select-item check">
+                        <input type="radio" name="optionsRadios" id="" value="ID Card"
+                               checked={props.documentType === UserKycDocumentType.IdCard}
+                               onClick={() => props.setDocumentType(UserKycDocumentType.IdCard)}/>
 
                             <div className="left">
                                 <div className="titlebox">
@@ -63,8 +56,10 @@ const KYCStep6 = (props: KYCStep6Props) => {
                     </label>
 
 
-                    <label className={`select-item ${props.documentType === UserKycDocumentType.DriverLicense && 'check'}`} onClick={() => props.setDocumentType(UserKycDocumentType.DriverLicense)}>
-                        <input type="radio" name="optionsRadios" id=""/>
+                    <label className="select-item">
+                        <input type="radio" name="optionsRadios" id=""
+                               checked={props.documentType === UserKycDocumentType.DriverLicense}
+                               onClick={() => props.setDocumentType(UserKycDocumentType.DriverLicense)}/>
 
                             <div className="left">
                                 <div className="titlebox">
@@ -74,8 +69,10 @@ const KYCStep6 = (props: KYCStep6Props) => {
                             <div className="right check-icon"></div>
                     </label>
 
-                    <label className={`select-item ${props.documentType === UserKycDocumentType.Passport && 'check'}`} onClick={() => props.setDocumentType(UserKycDocumentType.Passport)}>
-                        <input type="radio" name="optionsRadios" id=""/>
+                    <label className="select-item">
+                        <input type="radio" name="optionsRadios" id=""
+                               checked={props.documentType === UserKycDocumentType.Passport}
+                               onClick={() => props.setDocumentType(UserKycDocumentType.Passport)}/>
 
                             <div className="left">
                                 <div className="titlebox">
@@ -85,8 +82,10 @@ const KYCStep6 = (props: KYCStep6Props) => {
                             <div className="right check-icon"></div>
                     </label>
 
-                    <label className={`select-item ${props.documentType === UserKycDocumentType.ResidencePermit && 'check'}`} onClick={() => props.setDocumentType(UserKycDocumentType.ResidencePermit)}>
-                        <input type="radio" name="optionsRadios" id=""/>
+                    <label className="select-item">
+                        <input type="radio" name="optionsRadios" id=""
+                               checked={props.documentType === UserKycDocumentType.ResidencePermit}
+                               onClick={() => props.setDocumentType(UserKycDocumentType.ResidencePermit)}/>
 
                             <div className="left">
                                 <div className="titlebox">
@@ -100,8 +99,7 @@ const KYCStep6 = (props: KYCStep6Props) => {
             </form>
 
             <div className="mt50 d-grid gap-2">
-                <button type="button" className={`btn btn-primary mr-2 ${props.documentIssueCountryCode.value.length === 0 && 'disabled'}`}
-                        disabled={props.documentIssueCountryCode.value.length === 0}
+                <button type="button" className={`btn btn-primary mr-2 ${getButtonState()}`}
                         onClick={() => props.onSetStep(7)}>{t(`kyc.btn`)}
                 </button>
             </div>

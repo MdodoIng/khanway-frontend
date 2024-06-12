@@ -42,8 +42,7 @@ const LandingContainer = () => {
                         <h1 className="text-line-deco">{t(`landing.section2_title`)}</h1>
                     </div>
                     <div className="col-xl-12 video-con">
-                        <iframe className={"visually-hidden"}
-                                src="https://www.youtube.com/embed/RArtLpO1hWM?si=rsvhgFi21jZCmkh_"
+                        <iframe src="https://www.youtube.com/embed/RArtLpO1hWM?si=rsvhgFi21jZCmkh_"
                                 title="YouTube video player" frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen={true}></iframe>

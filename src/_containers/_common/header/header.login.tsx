@@ -35,8 +35,7 @@ const HeaderLogin = () => {
                   <li><Link to="/profile/nfw">{t(`profile_navigation.menu2`)}</Link></li>
                   <li><Link to="/profile/history">{t(`profile_navigation.menu3`)}</Link></li>
                   <li><Link to="/profile/wallet">{t(`profile_navigation.menu4`)}</Link></li>
-                  <li><Link to="/profile/kyc">{t(`profile_navigation.menu10`)}</Link></li>
-                  {/*<li><Link to="/profile/setting">{t(`profile_navigation.menu5`)}</Link></li>*/}
+                  <li><Link to="/profile/setting">{t(`profile_navigation.menu5`)}</Link></li>
                   <li><a onClick={() => onClickLogout()}>{t(`profile_navigation.menu6`)}</a></li>
                 </ul>
               </>

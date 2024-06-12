@@ -16,7 +16,8 @@ const KYCStep10 = () => {
             <div className="req-completion">
                 <img src="/images/Successful.png" alt="" className="suc-img"/>
                     <p className="suc-txt">
-                        {t(`kyc.step10_des1`)}
+                        {t(`kyc.step10_des1`)} <br/>
+                        {t(`kyc.step10_des2`)}
                     </p>
             </div>
 

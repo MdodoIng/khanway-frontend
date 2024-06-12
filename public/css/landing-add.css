@@ -1,14 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .custom-gradient {
   background: linear-gradient(
-    164.94deg,
-    #8d1dc9 -57.06%,
-    #7b2bb4 155.42%,
-    #6f34a5 304.29%,
-    #69399e 371.96%
+          164.94deg,
+          #8d1dc9 -57.06%,
+          #7b2bb4 155.42%,
+          #6f34a5 304.29%,
+          #69399e 371.96%
   );
 }
 .background {
@@ -332,18 +331,18 @@ button.alert-btn:focus {
   border-color: #222224;
 }
 .modal-wrap
-  .modal-container
-  .md-body
-  .withdrawal
-  input[type="number"]::-moz-placeholder {
+.modal-container
+.md-body
+.withdrawal
+input[type="number"]::-moz-placeholder {
   color: #c5c5c7;
   font-size: 14px;
 }
 .modal-wrap
-  .modal-container
-  .md-body
-  .withdrawal
-  input[type="number"]::placeholder {
+.modal-container
+.md-body
+.withdrawal
+input[type="number"]::placeholder {
   color: #c5c5c7;
   font-size: 14px;
 }
@@ -496,8 +495,8 @@ div:where(.swal2-container).swal2-center > .swal2-popup {
 
 .btn-grad:hover {
   background: var(
-    --linear,
-    linear-gradient(130deg, #78ffe0 20%, rgb(121, 200, 253) 51.8%, #d260ff 100%)
+          --linear,
+          linear-gradient(130deg, #78ffe0 20%, rgb(121, 200, 253) 51.8%, #d260ff 100%)
   ) !important;
   border-color: #1f2d3d !important;
   box-shadow: 0px 0px 48px 0px rgba(255, 86, 247, 0.432);
@@ -510,8 +509,8 @@ div:where(.swal2-container).swal2-center > .swal2-popup {
 
 .btn-grad:active {
   background: var(
-    --linear,
-    linear-gradient(130deg, #a3ffe9 20%, rgb(169, 245, 255) 51.8%, #edb1ff 100%)
+          --linear,
+          linear-gradient(130deg, #a3ffe9 20%, rgb(169, 245, 255) 51.8%, #edb1ff 100%)
   ) !important;
   border-color: #1f2d3d !important;
 }
@@ -538,10 +537,10 @@ div:where(.swal2-container).swal2-center > .swal2-popup {
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    130deg,
-    #48ffd4 20%,
-    rgb(113, 227, 241) 51.8%,
-    #9c1fe4 100%
+          130deg,
+          #48ffd4 20%,
+          rgb(113, 227, 241) 51.8%,
+          #9c1fe4 100%
   );
 }
 
@@ -559,10 +558,10 @@ div:where(.swal2-container).swal2-center > .swal2-popup {
 
 .btn-primary-line:hover:after {
   background: linear-gradient(
-    130deg,
-    #48ffd4 20%,
-    rgb(113, 227, 241) 51.8%,
-    #9c1fe4 100%
+          130deg,
+          #48ffd4 20%,
+          rgb(113, 227, 241) 51.8%,
+          #9c1fe4 100%
   );
 }
 
@@ -742,7 +741,7 @@ div:where(.swal2-container).swal2-center > .swal2-popup {
 .navigation .navbar .nav-dropdown ul {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 12px;
 }
 .navigation .navbar .nav-dropdown li {
   position: relative;
@@ -1072,13 +1071,13 @@ input#search-bar:focus:-ms-placeholder {
   width: 100%;
   height: 0px;
   background: linear-gradient(
-    130deg,
-    #48ffd4 20%,
-    rgb(113, 227, 241) 51.8%,
-    #9c1fe4 100%
+          130deg,
+          #48ffd4 20%,
+          rgb(113, 227, 241) 51.8%,
+          #9c1fe4 100%
   );
   position: absolute;
-  top: 100px;
+  top: 82px;
 }
 
 .bottom .container .row {
@@ -1111,10 +1110,10 @@ input#search-bar:focus:-ms-placeholder {
 .l-banner .row .bn-txtbox h1 {
   color: rgba(0, 0, 0, 0);
   background: linear-gradient(
-    130deg,
-    #48ffd4 40%,
-    rgb(113, 227, 241) 10%,
-    #a513fa 70%
+          130deg,
+          #48ffd4 40%,
+          rgb(113, 227, 241) 10%,
+          #a513fa 70%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -1137,6 +1136,7 @@ input#search-bar:focus:-ms-placeholder {
   position: relative;
   overflow: hidden;
   margin-top: 2rem;
+  padding-inline: 50px;
 }
 .container.l-video .video-title {
   text-align: center;
@@ -1146,10 +1146,10 @@ input#search-bar:focus:-ms-placeholder {
 .container.l-video .video-title .text-line-deco {
   color: transparent;
   background: linear-gradient(
-    130deg,
-    #48ffd4 40%,
-    rgb(113, 227, 241) 10%,
-    #a513fa 70%
+          130deg,
+          #48ffd4 40%,
+          rgb(113, 227, 241) 10%,
+          #a513fa 70%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -1164,10 +1164,10 @@ input#search-bar:focus:-ms-placeholder {
   width: 300px;
   height: 3px;
   background: linear-gradient(
-    130deg,
-    #48ffd4 20%,
-    rgb(113, 227, 241) 20%,
-    #a513fa 100%
+          130deg,
+          #48ffd4 20%,
+          rgb(113, 227, 241) 20%,
+          #a513fa 100%
   );
   top: -40px;
   left: calc(50% - 150px);
@@ -1199,10 +1199,10 @@ input#search-bar:focus:-ms-placeholder {
 .l-egg .bn-txtbox .text-line-deco {
   color: rgba(0, 0, 0, 0);
   background: linear-gradient(
-    130deg,
-    #48ffd4 40%,
-    rgb(113, 227, 241) 10%,
-    #a513fa 70%
+          130deg,
+          #48ffd4 40%,
+          rgb(113, 227, 241) 10%,
+          #a513fa 70%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -1299,10 +1299,10 @@ input#search-bar:focus:-ms-placeholder {
 .l-random .random-title .text-line-deco {
   color: rgba(0, 0, 0, 0);
   background: linear-gradient(
-    130deg,
-    #48ffd4 40%,
-    rgb(113, 227, 241) 10%,
-    #a513fa 70%
+          130deg,
+          #48ffd4 40%,
+          rgb(113, 227, 241) 10%,
+          #a513fa 70%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -1549,10 +1549,10 @@ input#search-bar:focus:-ms-placeholder {
 .container.khanaires .row .txt-box .text-line-deco {
   color: rgba(0, 0, 0, 0);
   background: linear-gradient(
-    130deg,
-    #48ffd4 40%,
-    rgb(113, 227, 241) 10%,
-    #a513fa 70%
+          130deg,
+          #48ffd4 40%,
+          rgb(113, 227, 241) 10%,
+          #a513fa 70%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -1578,7 +1578,7 @@ input#search-bar:focus:-ms-placeholder {
   background-color: #161e23;
 }
 .container.k-member .row {
-  
+  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
   padding-top: 10rem;
@@ -1592,16 +1592,16 @@ input#search-bar:focus:-ms-placeholder {
 }
 .container.k-member .member-title {
   text-align: center;
-  margin-top: 110px;
+  margin-top: 60px;
   position: relative;
 }
 .container.k-member .member-title .text-line-deco {
   color: transparent;
   background: linear-gradient(
-    130deg,
-    #48ffd4 40%,
-    rgb(113, 227, 241) 10%,
-    #a513fa 70%
+          130deg,
+          #48ffd4 40%,
+          rgb(113, 227, 241) 10%,
+          #a513fa 70%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -1664,14 +1664,15 @@ input#search-bar:focus:-ms-placeholder {
 }
 
 .container.partners {
-  padding-bottom: 110px;
+  max-width: 100%;
+  padding-bottom: 10rem;
 }
 .container.partners .row {
-  
+  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 5.5rem;
-  padding-bottom: 4rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
 }
 .container.partners .row .partners-title {
   text-align: center;
@@ -1720,7 +1721,7 @@ input#search-bar:focus:-ms-placeholder {
   border-color: #39999e;
 }
 .container.partners .partners-con .p-item .p-logobox:hover {
-  box-shadow: 0 3px 0 #39999e;
+  box-shadow: 0 3px 0 #ad45ff;
   border-color: #41ffdf;
   margin-top: 2px;
 }
@@ -1781,7 +1782,7 @@ input#search-bar:focus:-ms-placeholder {
   margin-top: 1px;
 }
 .nft-info .minting-period .period-txtbox .period-txt {
-  background: linear-gradient(90deg, #33ffcc, #9966ff);
+  background: linear-gradient(to right, #07ecb7, #07ecb7, #ca47f2, #ca47f2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.1rem;
@@ -1922,8 +1923,8 @@ input#search-bar:focus:-ms-placeholder {
   height: 16px;
   width: 70%;
   background: var(
-    --linear,
-    linear-gradient(95deg, #07ecb7 10.15%, #79b3ff 51.8%, #ca47f2 92.39%)
+          --linear,
+          linear-gradient(95deg, #07ecb7 10.15%, #79b3ff 51.8%, #ca47f2 92.39%)
   );
   animation: progress 5s ease forwards;
   border-radius: 10px;
@@ -2032,7 +2033,7 @@ input#search-bar:focus:-ms-placeholder {
 }
 .nft-info .count-box .counter {
   margin-left: 16px;
-  background: linear-gradient(90deg, #33ffcc, #9966ff);
+  background: linear-gradient(to right, #07ecb7, #ca47f2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 40px;
@@ -2589,6 +2590,7 @@ input#search-bar:focus:-ms-placeholder {
   }
   .container.l-video {
     padding-bottom: 10px;
+    padding-inline: 10px;
   }
   .container.l-video .video-title .text-line-deco {
     margin-bottom: 30px;

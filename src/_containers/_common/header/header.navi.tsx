@@ -4,7 +4,6 @@ import {RootState} from "@reducer/root.reducer.tsx";
 import {setCurrentPageAction, setUserAction} from "@action/auth.action.tsx";
 import {useTranslation} from "react-i18next";
 import {changeLanguage} from "../../../language/i18n.tsx";
-import "./header.css"
 
 const HeaderNavigation = () => {
     const path = useLocation();
@@ -26,36 +25,40 @@ const HeaderNavigation = () => {
     }
 
     const getHeaderMenu = () => {
-        return (
-            <>
-                <li className="nav-item dropdown">
-                    <Link className="nav-link" replace={true} to="/market">{t(`header.main_menu2`)}</Link>
-                    <div className="drop-box">
-                        <Link to="/minting" replace={true} className="drop-box-item">{t(`header.menu2_sub1`)}</Link>
-                        <Link to="/market/explore" replace={true} className="drop-box-item">{t(`header.menu2_sub2`)}</Link>
-                    </div>
-                </li>
-                <li className="nav-item dropdown m-menu w-hidden">
-                    <Link className="nav-link" to="/minting" replace={true}>{t(`header.menu2_sub1`)}</Link>
-                </li>
-                <li className="nav-item dropdown m-menu w-hidden">
-                    <Link className="nav-link" to="/market/explore" replace={true}>{t(`header.menu2_sub2`)}</Link>
-                </li>
-                <li className="nav-item dropdown mobile-hide">
-                    <a className="nav-link" href="javascript:void(0);">{t(`header.main_menu3`)}</a>
-                    <div className="drop-box">
-                        <Link to="/sns/verify" replace={true} className="drop-box-item">{t(`header.menu3_sub1`)}</Link>
-                        <Link to="/event/reward" replace={true} className="drop-box-item">{t(`header.menu3_sub2`)}</Link>
-                    </div>
-                </li>
-                <li className="nav-item dropdown m-menu w-hidden">
-                    <Link className="nav-link" to="/sns/verify" replace={true}>{t(`header.menu3_sub1`)}</Link>
-                </li>
-                <li className="nav-item dropdown m-menu w-hidden">
-                    <Link className="nav-link" to="/event/reward" replace={true}>{t(`header.menu3_sub2`)}</Link>
-                </li>
-            </>
-        )
+        if (import.meta.env.MODE === 'prod')
+            return (
+                <>
+                    <li className="nav-item dropdown">
+                        <Link className="nav-link" to="/minting">{t(`header.menu2_sub1`)}</Link>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <Link className="nav-link" to="/airdrop">{t(`header.menu2_sub3`)}</Link>
+                    </li>
+                </>
+            )
+        else
+            return (
+                <>
+                    <li className="nav-item dropdown">
+                        <Link className="nav-link" to="/market">{t(`header.main_menu2`)}</Link>
+
+                        <div className="drop-box">
+                            <Link to="/minting" className="drop-box-item">{t(`header.menu2_sub1`)}</Link>
+                            <Link to="/market/explore" className="drop-box-item">{t(`header.menu2_sub2`)}</Link>
+                            <Link to="/airdrop" className="drop-box-item">{t(`header.menu2_sub3`)}</Link>
+                        </div>
+                    </li>
+                    <li className="nav-item dropdown m-menu w-hidden">
+                        <Link className="nav-link" to="/airdrop" replace={true}>{t(`header.menu2_sub3`)}</Link>
+                    </li>
+                    <li className="nav-item dropdown m-menu w-hidden">
+                        <Link className="nav-link" to="/market/explore" replace={true}>{t(`header.menu2_sub2`)}</Link>
+                    </li>
+                    <li className="nav-item dropdown m-menu w-hidden">
+                        <Link className="nav-link" to="/minting" replace={true}>{t(`header.menu2_sub1`)}</Link>
+                    </li>
+                </>
+            )
     }
 
     const {t} = useTranslation();
@@ -68,36 +71,27 @@ const HeaderNavigation = () => {
                 {
                     getHeaderMenu()
                 }
+
                 <li className="nav-item dropdown m-menu">
                     <Link className="nav-link" to={user ? "/profile/nfw" : '/auth/login'}
-                          replace={true}
                           reloadDocument={true}>{t(`profile_navigation.menu2`)}</Link>
                 </li>
                 <li className="nav-item dropdown m-menu">
                     <Link className="nav-link" to={user ? "/profile" : '/auth/login'}
-                          replace={true}
                           reloadDocument={true}>{t(`profile_navigation.menu1`)}</Link>
                 </li>
                 <li className="nav-item dropdown m-menu">
                     <Link className="nav-link" to={user ? "/profile/history" : '/auth/login'}
-                          replace={true}
                           reloadDocument={true}>{t(`profile_navigation.menu3`)}</Link>
                 </li>
                 <li className="nav-item dropdown m-menu">
                     <Link className="nav-link" to={user ? "/profile/wallet" : '/auth/login'}
-                          replace={true}
                           reloadDocument={true}>{t(`profile_navigation.menu4`)}</Link>
                 </li>
                 <li className="nav-item dropdown m-menu">
-                    <Link className="nav-link" to={user ? "/profile/kyc" : '/auth/login'}
-                          replace={true}
-                          reloadDocument={true}>{t(`profile_navigation.menu10`)}</Link>
+                    <Link className="nav-link" to={user ? "/profile/setting" : "/auth/login"}
+                          reloadDocument={true}>{t(`profile_navigation.menu5`)}</Link>
                 </li>
-                {/*<li className="nav-item dropdown m-menu">*/}
-                {/*    <Link className="nav-link" to={user ? "/profile/setting" : "/auth/login"}*/}
-                {/*          replace={true}*/}
-                {/*          reloadDocument={true}>{t(`profile_navigation.menu5`)}</Link>*/}
-                {/*</li>*/}
                 {
                     !user
                         ?

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {CurrencySymbol, useGetCurrencyExchangeQuery, useGetUserHistoryByUserIdQuery} from "@graphql/graphql.ts";
+import {useGetCurrencyExchangeQuery, useGetUserHistoryByUserIdQuery} from "@graphql/graphql.ts";
 import Loading from "@container/_common/loading.tsx";
 import ProfileTitleComponent from "@container/profile/profile.title.tsx";
 import ProfileNavigationComponent from "@container/profile/profile.navigation.tsx";
@@ -8,7 +8,6 @@ import HistoryTable from "@container/profile/_component/history/history.table.ts
 import {getPageCount} from "@helper/pageCount.tsx";
 import PaginationComponent from "@container/profile/_component/history/history.table.pagination.tsx";
 import {useTranslation} from "react-i18next";
-import {getLanguage} from "../../../../language/i18n.tsx";
 
 export type HistoryComponentProps = {
     type: string;
@@ -17,13 +16,7 @@ const HistoryComponent = (props: HistoryComponentProps) => {
     const {t} = useTranslation();
     const {type} = props;
     const [page, setPage] = useState<number>(1);
-    const {data: currencyExchangeData, loading: currencyExchangeLoading} = useGetCurrencyExchangeQuery({
-        variables: {
-            input: {
-                symbol: getLanguage() === 'ko' ? CurrencySymbol.Krw : CurrencySymbol.Inr
-            }
-        }
-    });
+    const {data: currencyExchangeData, loading: currencyExchangeLoading} = useGetCurrencyExchangeQuery();
     const {data, loading, refetch } = useGetUserHistoryByUserIdQuery({
         variables: {
             input: {
@@ -50,8 +43,6 @@ const HistoryComponent = (props: HistoryComponentProps) => {
     }, [page]);
 
     if (loading || currencyExchangeLoading) return <Loading />;
-
-    console.log('currency: ', currencyExchangeData?.getCurrencyExchange?.currencyExchange?.value ?? '0')
 
     return (
         <div id="main-wrapper" className="front">

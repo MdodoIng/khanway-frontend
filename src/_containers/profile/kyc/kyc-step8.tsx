@@ -30,7 +30,7 @@ const KYCStep8 = (props: KYCStep8Props) => {
                 <div className="front-area" style={{marginBottom: "12px"}}>
 
                     <div className="file-upload">
-                        <label className="input-file" style={{paddingLeft: 0}}>
+                        <label className="input-file">
                             <label className={`input-file ${filename && 'has_file'}`}>
                                 <input type="file" onChange={e => onChange(e.target.files![0])}/>
                                 {

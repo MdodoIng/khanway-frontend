@@ -118,10 +118,10 @@ export default {
         section3_category1: "Music",
         section3_category2: "Beauty",
         section3_category3: "Game",
-        section3_silver_title: "Silver Rewards Eggs",
+        section3_silver_title: "Silver Rewards eggs",
         section3_silver_description:
           "In order to achieve an airdrop for the Silver Egg, you must complete our SNS tasks of following and subscribing our Youtube channels and joining our Telegram Communities, and inviting at least 3 friends. There are slots for only 18462 Silver Eggs, so don’t miss this opportunity!",
-        section3_gold_title: "Golden Special Eggs",
+        section3_gold_title: "Golden Special egg",
         section3_gold_description:
           "Interested in getting rich? The Golden Egg is our special Jackpot bonus for buyers of our NFW. At a ‘random’ percentage of 0.2%, everyone has a chance to receive a 20X boost of their original amount of purchase!",
         buy_egg: "Coming Soon",
@@ -613,9 +613,6 @@ export default {
         description_04:
           "NFW options will be awarded in the amount of the purchased NFW, but in small increments of the next lower denomination.<0/>(Example) If you purchase $500, you will receive two $200 and one $100 as options.",
       },
-      Offices : {
-        title : "Our Offices"
-      }
     },
   },
 }

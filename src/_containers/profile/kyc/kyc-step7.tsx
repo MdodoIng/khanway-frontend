@@ -1,14 +1,11 @@
 import {useState} from "react";
 import {t} from "i18next";
-import {UserKycDocumentType} from "@graphql/graphql.ts";
-import {Trans} from "react-i18next";
 
 export type KYCStep7Props = {
     onSetStep: (step: number) => void;
     documentFrontImage: string| undefined;
     documentBackImage: string| undefined;
     onUploadImage: (file: File, type: string) => void;
-    documentType: UserKycDocumentType;
 }
 
 const KYCStep7 = (props: KYCStep7Props) => {
@@ -29,19 +26,6 @@ const KYCStep7 = (props: KYCStep7Props) => {
         }
     }
 
-    const documentType = () => {
-        switch (props.documentType) {
-            case UserKycDocumentType.IdCard:
-                return t(`kyc.step6_id`);
-            case UserKycDocumentType.Passport:
-                return t(`kyc.step6_passport`);
-            case UserKycDocumentType.DriverLicense:
-                return t(`kyc.step6_license`);
-            case UserKycDocumentType.ResidencePermit:
-                return t(`kyc.step6_permit`);
-        }
-    }
-
     return (
         <div className="kyc-area">
             <div className="kyc-titlebox">
@@ -51,7 +35,7 @@ const KYCStep7 = (props: KYCStep7Props) => {
 
 
             <form className="row g-3">
-                <p className="form-label"><Trans i18nKey={'kyc.step7_front'} values={{documentType: documentType()}}/></p>
+                <p className="form-label">{t(`kyc.step7_front`)}</p>
 
                 <div className="front-area" style={{marginBottom: "12px"}}>
                     <img src="/images/id-front.png" alt="" className="idcard-icon"/>
@@ -69,7 +53,7 @@ const KYCStep7 = (props: KYCStep7Props) => {
                 </div>
 
 
-                <p className="form-label"><Trans i18nKey={'kyc.step7_back'} values={{documentType: documentType()}}/></p>
+                <p className="form-label">{t(`kyc.step7_back`)}</p>
                 <div className="front-area">
                     <img src="/images/id-back.png" alt="" className="idcard-icon"/>
 
@@ -94,7 +78,7 @@ const KYCStep7 = (props: KYCStep7Props) => {
             <div className="mt50 d-grid gap-2">
                 <div className="mt50 d-grid gap-2">
                     <button type="button" className={`btn btn-primary mr-2 ${getButtonState()}`}
-                            onClick={() => props.onSetStep(8)}>{t(`kyc.btn`)}
+                            onClick={() => props.onSetStep(8)}>Continue
                     </button>
                 </div>
             </div>

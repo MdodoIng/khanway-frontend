@@ -1,5 +1,5 @@
-import { LiaCheckCircleSolid } from "react-icons/lia";
-import { useEffect, useState } from "react";
+import {LiaCheckCircleSolid} from "react-icons/lia"
+import {useEffect, useState} from "react"
 import {
   addRefferal,
   addTgUsername,
@@ -15,83 +15,83 @@ import {
   // otpVerify,
   // register,
   // twitterFollow,
-} from "../service/api";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+} from "../service/api"
+import {toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 // import useMediaQuery from "@mui/material/useMediaQuery"
 // import {useTheme} from "@mui/material/styles"
-import { CircularProgress } from "@mui/material";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import {CircularProgress} from "@mui/material"
+import {CopyToClipboard} from "react-copy-to-clipboard"
 // import {SERVER_URL} from "../config"
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "@reducer/root.reducer";
-import useStylesheet from "@helper/useStylesheet.tsx";
-import { useTranslation } from "react-i18next";
+import {useNavigate, useParams} from "react-router-dom"
+import {useSelector} from "react-redux"
+import {RootState} from "@reducer/root.reducer"
+import useStylesheet from "@helper/useStylesheet.tsx"
+import {useTranslation} from "react-i18next"
 // import silver from "../asset/image/silver.gif"
 
 export const MainPage = () => {
-  useStylesheet("/css/landing.css");
+  useStylesheet("/css/landing.css")
   // useStylesheet('/css/landing-add3.css');
-  useStylesheet("/css/landing-add.css");
-  useStylesheet("/css/landing-add3.css");
-  useStylesheet("/css/landing-add2.css");
-  useStylesheet("/css/airdrop.css");
-  const { t } = useTranslation();
+  useStylesheet("/css/landing-add.css")
+  useStylesheet("/css/landing-add3.css")
+  useStylesheet("/css/landing-add2.css")
+  useStylesheet("/css/airdrop.css")
+  const {t} = useTranslation()
 
   const tabs = {
     REGISTER: "REGISTER",
     LOGIN: "LOGIN",
     MAIN: "MAIN",
     VERIFY: "VERIFY",
-  };
-  const params = useParams();
+  }
+  const params = useParams()
   // console.log("%c Line:39 🍖 params", "color:#2eafb0", params)
   useEffect(() => {
     if (params.id) {
-      setRefferel(params.id);
+      setRefferel(params.id)
       // setRefferelV(true)
     }
-  }, [params]);
-  const { user } = useSelector((root: RootState) => root.AuthReducer);
-  console.log("%c Line:46 🎂 userEmail", "color:#ed9ec7", user);
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState(tabs.MAIN);
+  }, [params])
+  const {user} = useSelector((root: RootState) => root.AuthReducer)
+  console.log("%c Line:46 🎂 userEmail", "color:#ed9ec7", user)
+  const navigate = useNavigate()
+  const [activeTab, setActiveTab] = useState(tabs.MAIN)
   // const [name, setName] = useState("")
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState()
   // const [password, setPassword] = useState("")
-  const [telegram, setTelegram] = useState("");
+  const [telegram, setTelegram] = useState("")
   // const [otp, setOtp] = useState("")
-  const [emailV, setEmailV] = useState(false);
-  console.log("%c Line:64 🥑 emailV", "color:#2eafb0", emailV);
+  const [emailV, setEmailV] = useState(false)
+  console.log("%c Line:64 🥑 emailV", "color:#2eafb0", emailV)
   // const [twitterL, setTwitterL] = useState(false)
-  const [groupLoad, setGroupLoad] = useState(false);
-  const [channelLoad, setChannelLoad] = useState(false);
+  const [groupLoad, setGroupLoad] = useState(false)
+  const [channelLoad, setChannelLoad] = useState(false)
   // console.log("%c Line:45 🍩 twitterL", "color:#ea7e5c", twitterL)
   // const [twitterF, setTwitterF] = useState(false)
-  const [telegramC, setTelegramC] = useState(false);
-  const [telegramG, setTelegramG] = useState(false);
-  const [telegramV, setTelegramV] = useState(false);
-  const [btn1, setBtn1] = useState(false);
+  const [telegramC, setTelegramC] = useState(false)
+  const [telegramG, setTelegramG] = useState(false)
+  const [telegramV, setTelegramV] = useState(false)
+  const [btn1, setBtn1] = useState(false)
 
   useEffect(() => {
     if (user?.email && user?.email !== "") {
-      setEmail((user as any)?.email);
-      setEmailV(true);
+      setEmail((user as any)?.email)
+      setEmailV(true)
     }
-  }, [user]);
+  }, [user])
 
   // console.log("%c Line:53 🍅 btn1", "color:#ea7e5c", btn1)
-  const [btn2, setBtn2] = useState(false);
-  const [youtubeV, setYoutubeV] = useState(false);
-  const [refferelV, setRefferelV] = useState(false);
-  const [refferel, setRefferel] = useState("");
-  const [refferelP, setRefferelP] = useState();
-  const [button, setButton] = useState(1);
-  console.log("%c Line:91 🌭 button", "color:#3f7cff", button);
+  const [btn2, setBtn2] = useState(false)
+  const [youtubeV, setYoutubeV] = useState(false)
+  const [refferelV, setRefferelV] = useState(false)
+  const [refferel, setRefferel] = useState("")
+  const [refferelP, setRefferelP] = useState()
+  const [button, setButton] = useState(1)
+  console.log("%c Line:91 🌭 button", "color:#3f7cff", button)
   // console.log("%c Line:52 🌶 button", "color:#ed9ec7", button)
   // const [open, setOpen] = useState(false)
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   // const theme = useTheme()
   // const fullScreen = useMediaQuery(theme.breakpoints.down("md"))
 
@@ -105,11 +105,11 @@ export const MainPage = () => {
 
   useEffect(() => {
     if (sessionStorage?.token) {
-      setEmail(sessionStorage?.email);
-      setActiveTab(tabs.MAIN);
-      userByEmail();
+      setEmail(sessionStorage?.email)
+      setActiveTab(tabs.MAIN)
+      userByEmail()
     }
-  }, [sessionStorage]);
+  }, [sessionStorage])
 
   // const handleLogin = () => {
   //   if (!email) {
@@ -252,67 +252,67 @@ export const MainPage = () => {
     //   return toast.error("Enter email")
     // }
     if (!email) {
-      return;
+      return
     }
     let headers: any = {
       Authorization: email,
-    };
+    }
     getUserByEmail(headers)
       .then((res: any) => {
-        console.log("res==>", res);
+        console.log("res==>", res)
         if (res.status) {
           // setRefferelP(res?.data?.refferelCode)
           if (email) {
-            setEmailV(true);
-            setButton(2);
+            setEmailV(true)
+            setButton(2)
           }
           if (sessionStorage.twitter) {
-            setButton(3);
+            setButton(3)
           }
           if (res?.data?.followOnTwitter) {
             // setTwitterF(true)
             // setTwitterL(true)
-            setButton(4);
+            setButton(4)
           }
           if (res?.data?.telegramUserName) {
-            setTelegram(res?.data?.telegramUserName);
-            setTelegramV(true);
-            setButton(5);
+            setTelegram(res?.data?.telegramUserName)
+            setTelegramV(true)
+            setButton(5)
           }
           if (res?.data?.telegramChennalJoined) {
-            setTelegramC(true);
-            setButton(6);
+            setTelegramC(true)
+            setButton(6)
           }
           if (res?.data?.telegramGroupJoined) {
-            setTelegramG(true);
-            setButton(7);
+            setTelegramG(true)
+            setButton(7)
           }
           if (res?.data?.ytSubscribe) {
-            setYoutubeV(true);
-            setButton(8);
+            setYoutubeV(true)
+            setButton(8)
           }
         } else {
-          setButton(1);
+          setButton(1)
           // setEmailV(false)
-          setTelegramC(false);
-          setTelegramG(false);
-          setTelegram("");
-          setYoutubeV(false);
+          setTelegramC(false)
+          setTelegramG(false)
+          setTelegram("")
+          setYoutubeV(false)
         }
       })
       .catch((e: any) => {
-        console.log("e==>", e);
+        console.log("e==>", e)
         if (!e.response.data.status) {
-          setButton(1);
+          setButton(1)
           // setEmailV(false)
-          setTelegramC(false);
-          setTelegramG(false);
-          setTelegram("");
-          setYoutubeV(false);
-          setRefferel("");
+          setTelegramC(false)
+          setTelegramG(false)
+          setTelegram("")
+          setYoutubeV(false)
+          setRefferel("")
         }
-      });
-  };
+      })
+  }
 
   // const loginTwitter = () => {
   //   if (!email) {
@@ -346,127 +346,127 @@ export const MainPage = () => {
   // }
   const handleTgUsername = () => {
     if (telegram === "") {
-      return toast.warning("Please enter telegram username");
+      return toast.warning("Please enter telegram username")
     }
     let headers: any = {
       Authorization: email,
-    };
-    addTgUsername({ username: telegram }, headers)
+    }
+    addTgUsername({username: telegram}, headers)
       .then((res: any) => {
-        console.log("tele==>", res);
+        console.log("tele==>", res)
         if (res?.status) {
-          toast.success(res?.message);
-          setButton(5);
-          setTelegramV(true);
+          toast.success(res?.message)
+          setButton(5)
+          setTelegramV(true)
         }
       })
       .catch((e) => {
-        console.log("e==>", e);
-      });
-  };
+        console.log("e==>", e)
+      })
+  }
   const handleTgChannel = () => {
     if (!telegram) {
-      return toast.error("Enter Telegram User Name");
+      return toast.error("Enter Telegram User Name")
     }
     let headers: any = {
       Authorization: email,
-    };
+    }
     getTgChannel(headers)
       .then((res: any) => {
-        console.log("teleChannel==>", res);
+        console.log("teleChannel==>", res)
         if (res?.status) {
-          toast.success(res?.message);
-          window.open(res?.url, "_blank");
-          setBtn1(true);
+          toast.success(res?.message)
+          window.open(res?.url, "_blank")
+          setBtn1(true)
         }
       })
       .catch((e: any) => {
-        console.log("e==>", e);
-      });
-  };
+        console.log("e==>", e)
+      })
+  }
   const handleTgGroup = () => {
     if (telegram === "") {
-      return toast.error("Enter Telegram User Name");
+      return toast.error("Enter Telegram User Name")
     }
     let headers: any = {
       Authorization: email,
-    };
+    }
     getTgGroup(headers)
       .then((res: any) => {
-        console.log("teleChannel==>", res);
+        console.log("teleChannel==>", res)
         if (res?.status) {
-          toast.success(res?.message);
-          window.open(res?.url, "_blank");
-          setBtn2(true);
+          toast.success(res?.message)
+          window.open(res?.url, "_blank")
+          setBtn2(true)
         }
       })
       .catch((e: any) => {
-        console.log("e==>", e);
-      });
-  };
+        console.log("e==>", e)
+      })
+  }
   const checkTgUserC = () => {
     // if (!telegram) {
     //   return
     // }
-    setChannelLoad(true);
+    setChannelLoad(true)
     let params: any = {
       useraname: telegram,
       chennal: "1",
-    };
+    }
     let headers: any = {
       Authorization: email,
-    };
+    }
     checkUser(params, headers)
       .then((res: any) => {
-        console.log("teleChannel==>", res);
+        console.log("teleChannel==>", res)
         if (res?.status) {
-          toast.success(res?.message);
-          setChannelLoad(false);
-          setTelegramC(true);
-          setButton(6);
+          toast.success(res?.message)
+          setChannelLoad(false)
+          setTelegramC(true)
+          setButton(6)
         } else {
-          setChannelLoad(false);
+          setChannelLoad(false)
         }
       })
       .catch((e: any) => {
-        console.log("e==>", e);
-        setChannelLoad(false);
-        setBtn1(false);
-        toast.error(e?.response?.data?.message);
-      });
-  };
+        console.log("e==>", e)
+        setChannelLoad(false)
+        setBtn1(false)
+        toast.error(e?.response?.data?.message)
+      })
+  }
   const checkTgUserG = () => {
     // if (!telegram) {
     //   return
     // }
     // window.open("https://t.me/khanteum_official", "_blank")
-    setGroupLoad(true);
+    setGroupLoad(true)
     let params: any = {
       useraname: telegram,
       chennal: "2",
-    };
+    }
     let headers: any = {
       Authorization: email,
-    };
+    }
     checkUser(params, headers)
       .then((res: any) => {
-        console.log("teleChannel==>", res);
+        console.log("teleChannel==>", res)
         if (res?.status) {
-          toast.success(res?.message);
-          setTelegramG(true);
-          setButton(7);
-          setGroupLoad(false);
+          toast.success(res?.message)
+          setTelegramG(true)
+          setButton(7)
+          setGroupLoad(false)
         } else {
-          setGroupLoad(false);
+          setGroupLoad(false)
         }
       })
       .catch((e: any) => {
-        console.log("e==>", e);
-        setGroupLoad(false);
-        setBtn2(false);
-        toast.error(e?.response?.data?.message);
-      });
-  };
+        console.log("e==>", e)
+        setGroupLoad(false)
+        setBtn2(false)
+        toast.error(e?.response?.data?.message)
+      })
+  }
 
   // useEffect(() => {
   //   if (telegram) {
@@ -475,99 +475,96 @@ export const MainPage = () => {
   // }, [telegram])
 
   const handleYoutube = () => {
-    window.open("https://www.youtube.com/@KHAN_ZZANG", "_blank");
+    window.open("https://www.youtube.com/@KHAN_ZZANG", "_blank")
     let headers: any = {
       Authorization: email,
-    };
+    }
     getUserByYt(headers)
       .then((res: any) => {
-        console.log("ref==>", res);
+        console.log("ref==>", res)
         if (res?.status) {
-          toast.success(res?.message);
-          setYoutubeV(true);
-          setButton(8);
+          toast.success(res?.message)
+          setYoutubeV(true)
+          setButton(8)
         }
       })
       .catch((e: any) => {
-        console.log("e==>", e);
-      });
-  };
+        console.log("e==>", e)
+      })
+  }
   const handleRefferal = () => {
     if (refferel === "") {
-      return toast.error("Enter refferal code");
+      return toast.error("Enter refferal code")
     }
-    setLoading(true);
+    setLoading(true)
     let code: any = {
       code: refferel,
-    };
+    }
     let headers: any = {
       Authorization: email,
-    };
+    }
     addRefferal(code, headers)
       .then((res: any) => {
-        console.log("ref==>", res);
+        console.log("ref==>", res)
         if (res?.status) {
-          setRefferelV(true);
-          setLoading(false);
-          setButton(9);
-          toast.success("Refferel code verified");
+          setRefferelV(true)
+          setLoading(false)
+          setButton(9)
+          toast.success("Refferel code verified")
           let headers: any = {
             Authorization: email,
-          };
+          }
           getUserByEmail(headers)
             .then((res: any) => {
-              console.log("res==>", res);
+              console.log("res==>", res)
               if (res.status) {
-                setRefferelP(res?.data?.refferelCode);
+                setRefferelP(res?.data?.refferelCode)
               }
             })
             .catch((e: any) => {
-              console.log("e==>", e);
-            });
+              console.log("e==>", e)
+            })
         } else {
-          setLoading(false);
-          toast.error("Please enter valid referral code");
+          setLoading(false)
+          toast.error("Please enter valid referral code")
         }
       })
       .catch((e: any) => {
-        console.log("e==>", e);
-        setLoading(false);
-        toast.error("Please enter valid referral code");
-      });
-  };
+        console.log("e==>", e)
+        setLoading(false)
+        toast.error("Please enter valid referral code")
+      })
+  }
 
   useEffect(() => {
     if (activeTab === tabs.MAIN) {
-      userByEmail();
+      userByEmail()
     }
     // if (email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
     //   loginTwitter()
     // }
-  }, [email, activeTab]);
+  }, [email, activeTab])
 
   useEffect(() => {
     if (sessionStorage.twitter) {
       // setTwitterL(true)
-      setButton(3);
+      setButton(3)
     }
-  }, [sessionStorage]);
+  }, [sessionStorage])
   return (
     <div
-      className={`relative mx-auto flex w-[87vw] max-w-[90vw] lg:mx-auto  text-white`}
-    >
+      className={`relative mx-auto flex w-[87vw] max-w-[90vw] lg:mx-auto  text-white`}>
       <div className="flex-1 flex-col mt-0 sm:mt-6 mx-auto lg:mt-0 w-[87vw] sm:flex">
         <div className="translate-y-0 sm:w-[85vw] w-[87vw] sm:mx-auto">
           <div
-            style={{ fontSize: "1.8vh", lineHeight: "24px", fontWeight: "600" }}
-            className="text-[#fff] float-left"
-          >
+            style={{fontSize: "1.8vh", lineHeight: "24px", fontWeight: "600"}}
+            className="text-[#fff] float-left">
             {t(`airdrop.header1`)}
           </div>
           <br />
           <h1
-            style={{ fontSize: "4vh", lineHeight: "130%", fontWeight: "700" }}
-            className="text-[#18191a]  float-left"
-          >
+            style={{fontSize: "4vh", lineHeight: "130%", fontWeight: "700"}}
+            className="text-[#18191a]  float-left">
             {t(`airdrop.header2`)} :
           </h1>
         </div>
@@ -576,8 +573,7 @@ export const MainPage = () => {
             <div
               className={`${
                 activeTab === tabs.MAIN ? "overflow-auto" : "overflow-hidden"
-              } example w-[70%] 2xl:w-[60%] mt-8 flex-1 fill-available`}
-            >
+              } example w-[70%] 2xl:w-[60%] mt-8 flex-1 fill-available`}>
               <div className="grid lg:grid-cols-[56px_1fr_230px] 2xl:grid-cols-[56px_1fr_314px] grid-cols-[10vw_1fr_35vw] sm:grid-cols-[10vw_1fr_20vw] items-center justify-between gap-[3vw] py-[3vh] border-b border-[#787897]">
                 <div className="col-span-1">
                   <div
@@ -586,8 +582,7 @@ export const MainPage = () => {
                       lineHeight: "24px",
                       fontWeight: "600",
                     }}
-                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]"
-                  >
+                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]">
                     1
                   </div>
                 </div>
@@ -608,11 +603,10 @@ export const MainPage = () => {
                         // tabIndex="-1"
                         // disabled={button !== 1 || loading}
                         onClick={() => {
-                          localStorage.setItem("airdrop", "airdrop");
-                          navigate("/auth/login");
+                          localStorage.setItem("airdrop", "airdrop")
+                          navigate("/auth/login")
                         }}
-                        className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full bg-[#f0f8ff] cursor-pointer hover:bg-[#f0f8ff] text-[#18191a]`}
-                      >
+                        className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full bg-[#f0f8ff] cursor-pointer hover:bg-[#f0f8ff] text-[#18191a]`}>
                         {t(`airdrop.tab1btn`)}
                       </button>
                     ) : (
@@ -744,8 +738,7 @@ export const MainPage = () => {
                       lineHeight: "24px",
                       fontWeight: "600",
                     }}
-                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]"
-                  >
+                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]">
                     2
                   </div>
                 </div>
@@ -766,8 +759,7 @@ export const MainPage = () => {
                         // tabIndex="-1"
                         onClick={handleTgUsername}
                         // disabled={button !== 4}
-                        className={`airdrop-btn whitespace-pre-line sm:min-h-[40px] h-fit font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}
-                      >
+                        className={`airdrop-btn whitespace-pre-line sm:min-h-[40px] h-fit font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}>
                         {t(`airdrop.tab2btn`)}
                       </button>
                     ) : (
@@ -787,8 +779,7 @@ export const MainPage = () => {
                       lineHeight: "24px",
                       fontWeight: "600",
                     }}
-                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]"
-                  >
+                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]">
                     3
                   </div>
                 </div>
@@ -814,10 +805,9 @@ export const MainPage = () => {
                             // tabIndex="-1"
                             // disabled={button !== 5}
                             onClick={() => {
-                              handleTgChannel();
+                              handleTgChannel()
                             }}
-                            className={`airdrop-btn sm:min-h-[40px] h-[5vh]  leading-[0px] font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full  cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}
-                          >
+                            className={`airdrop-btn sm:min-h-[40px] h-[5vh]  leading-[0px] font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full  cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}>
                             {t(`airdrop.tab3btn`)}
                           </button>
                         ) : (
@@ -825,8 +815,7 @@ export const MainPage = () => {
                             // tabIndex="-1"
                             disabled={channelLoad}
                             onClick={checkTgUserC}
-                            className={`airdrop-btn sm:min-h-[40px] h-[5vh]  leading-[0px] font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}
-                          >
+                            className={`airdrop-btn sm:min-h-[40px] h-[5vh]  leading-[0px] font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}>
                             {channelLoad ? (
                               <CircularProgress className="spinner" />
                             ) : (
@@ -852,8 +841,7 @@ export const MainPage = () => {
                       lineHeight: "24px",
                       fontWeight: "600",
                     }}
-                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]"
-                  >
+                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]">
                     4
                   </div>
                 </div>
@@ -879,8 +867,7 @@ export const MainPage = () => {
                             // tabIndex="-1"
                             onClick={handleTgGroup}
                             // disabled={button !== 6}
-                            className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}
-                          >
+                            className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}>
                             {t(`airdrop.tab4btn`)}
                           </button>
                         ) : (
@@ -888,8 +875,7 @@ export const MainPage = () => {
                             // tabIndex="-1"
                             onClick={checkTgUserG}
                             disabled={groupLoad}
-                            className={`airdrop-btn sm:min-h-[40px] h-[5vh]  leading-[0px] font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full  cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}
-                          >
+                            className={`airdrop-btn sm:min-h-[40px] h-[5vh]  leading-[0px] font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full  cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}>
                             {groupLoad ? (
                               <CircularProgress className="spinner" />
                             ) : (
@@ -914,8 +900,7 @@ export const MainPage = () => {
                       lineHeight: "24px",
                       fontWeight: "600",
                     }}
-                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]"
-                  >
+                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-[#18191a] [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]">
                     5
                   </div>
                 </div>
@@ -939,8 +924,7 @@ export const MainPage = () => {
                         // tabIndex="-1"
                         // disabled={button !== 7}
                         onClick={handleYoutube}
-                        className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}
-                      >
+                        className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full cursor-pointer bg-[#f0f8ff] hover:bg-[#f0f8ff] text-[#18191a]`}>
                         {t(`airdrop.tab5btn`)}
                       </button>
                     ) : (
@@ -959,8 +943,7 @@ export const MainPage = () => {
                       lineHeight: "24px",
                       fontWeight: "600",
                     }}
-                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-black [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]"
-                  >
+                    className="flex sm:h-10 h-[5vh] w-[10vw] sm:w-14 items-center justify-center bg-[#f0f8ff] text-black [clip-path:polygon(36%_0,100%_0,100%_50%,64%_100%,0_100%,0%_50%)]">
                     6
                   </div>
                 </div>
@@ -986,8 +969,7 @@ export const MainPage = () => {
                         // tabIndex="-1"
                         onClick={handleRefferal}
                         disabled={loading}
-                        className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full  cursor-pointer bg-[#f0f8ff] hover:text-[#18191a] text-[#18191a]`}
-                      >
+                        className={`airdrop-btn sm:min-h-[40px] h-fit  font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full  cursor-pointer bg-[#f0f8ff] hover:text-[#18191a] text-[#18191a]`}>
                         {loading ? (
                           <CircularProgress className="spinner" />
                         ) : (
@@ -1010,8 +992,7 @@ export const MainPage = () => {
                       // tabIndex="-1"
                       // onClick={handleRefferal}
                       className={`airdrop-btn sm:min-h-[40px] h-fit font-semibold sm:leading-[24px] sm:px-6 px-3 py-2 text-[1.5vh] sm:text-[1.8vh] rounded-bl-md rounded-tr-md [clip-path:polygon(20px_0,100%_0,100%_50%,calc(100%-20px)_100%,0_100%,0_50%)] w-full
-                        bg-[#f0f8ff] text-[#18191a]`}
-                    >
+                        bg-[#f0f8ff] text-[#18191a]`}>
                       <CopyToClipboard
                         text={`${window.location.origin}/airdrop/${
                           refferelP ? refferelP : ""
@@ -1020,11 +1001,10 @@ export const MainPage = () => {
                           console.log(
                             `${window.location.origin}/airdrop/${
                               refferelP ? refferelP : ""
-                            }`
+                            }`,
                           ),
                           toast.success("Link Copied")
-                        )}
-                      >
+                        )}>
                         <div className="flex flex-row cursor-pointer">
                           Copy Your Referral Link
                         </div>
@@ -1322,10 +1302,9 @@ export const MainPage = () => {
           )} */}
           <figure
             aria-hidden="true"
-            className="relative h-fit w-fit hidden sm:block"
-          >
+            className="relative h-fit w-fit hidden sm:block">
             <div className="relative h-full w-full flex justify-center">
-              <img
+            <img
                 src="/images/mysteryegg.gif"
                 alt="silver-egg"
                 className="bg-transparent"
@@ -1346,5 +1325,5 @@ export const MainPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

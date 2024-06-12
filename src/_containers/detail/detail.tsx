@@ -117,10 +117,7 @@ const DetailContainer = () => {
                                             </div>
 
                                             <p className="mb-3">{data.getNFTById.nft.metadata?.description}</p>
-                                            {
-                                                data.getNFTById.nft.tradeCount === 0 &&
-                                                <p className="mb-3">This NFW Could Exercise Its Stake In Khanteum</p>
-                                            }
+
 
                                             <div className="nfw-price-box">
                                                 <span>price</span>

@@ -21,7 +21,6 @@ const ModalReducer = createReducer<ModalState, ModalAction>(initialState, {
     }),
     [ON_TOGGLE_LOADING_MODAL]: (state, action) => ({
         ...state,
-        
         isOpenLoadingModal: action.payload,
     }),
     [ON_TOGGLE_EFFECT_MODAL]: (state, action) => ({

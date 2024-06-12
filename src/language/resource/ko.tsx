@@ -35,7 +35,7 @@ export default {
         menu2_sub3: "Airdrop",
         menu1: "칸황의알 이란",
         menu2: "마켓",
-        menu3: "세계 최초 영업권 NFW",
+        menu3: "세계 최초 영입권 NFW",
         menu4: "Semi-Defi 특별 멤버십",
         menu5: "Minting",
         login: "로그인",
@@ -614,9 +614,6 @@ export default {
         success_text:
           "옵션 지급은 순차적으로 진행되어 시간이 걸릴 수 있습니다.",
       },
-      Offices : {
-        title : "각 지사"
-      }
     },
   },
 }

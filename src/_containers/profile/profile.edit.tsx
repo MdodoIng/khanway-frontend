@@ -93,10 +93,7 @@ const ProfileEditComponent = () => {
         return editUser({profileImage: image});
     }
 
-    const onEnterCatch = (e: any) => {
-        if (e.key === 'Enter') e.preventDefault();
-        else return;
-    }
+
 
     return (
         <div className="row editpf-con">
@@ -129,7 +126,6 @@ const ProfileEditComponent = () => {
                                 <div className="user-info">
                                     <span>{t(`profile_edit.nickname`)}</span>
                                     <input type="text" className="user-input" placeholder={user?.nickname ?? ''}
-                                           onKeyDown={(e) => onEnterCatch(e)}
                                            onChange={(e) => editUser({newName: e.target.value})}/>
                                     {!nicknameState ? <span className="error-msg">{t(`profile_edit.nickname_err`)}</span> : <></>}
                                 </div>
@@ -162,7 +158,6 @@ const ProfileEditComponent = () => {
                                 <div className="user-info">
                                     <span>{t(`profile_edit.current`)}</span>
                                     <input type="password" className="user-input" placeholder={t(`profile_edit.current_input`)}
-                                           onKeyDown={(e) => onEnterCatch(e)}
                                            onChange={(e) => editUser({password: e.target.value})}/>
                                     {passwordState ? <></> : <span className="error-msg">{t(`profile_edit.pw_err`)}</span>}
                                 </div>
@@ -171,7 +166,6 @@ const ProfileEditComponent = () => {
                                 <div className="user-info">
                                     <span>{t(`profile_edit.new_pw`)}</span>
                                     <input type="password" className="user-input" placeholder={t(`profile_edit.new_input`)}
-                                           onKeyDown={(e) => onEnterCatch(e)}
                                            onChange={(e) => editUser({newPassword: e.target.value})}/>
                                     {/*<span className="error-msg">비밀번호 필수입력조건 노출</span>*/}
                                     {regex ? <></> : <span className="error-msg">{t(`profile_edit.pw_multi`)}</span>}
@@ -181,7 +175,6 @@ const ProfileEditComponent = () => {
                                 <div className="user-info">
                                     <span>{t(`profile_edit.check_pw`)}</span>
                                     <input type="password" className="user-input" placeholder={t(`profile_edit.new_input`)}
-                                           onKeyDown={(e) => onEnterCatch(e)}
                                     onChange={(e) => setNewPassword(e.target.value)}/>
                                     {checkPassword ? <span className="success-msg">{t(`profile_edit.pw_match`)}</span> : <span className="error-msg">{t(`profile_edit.pw_mismatch`)}</span>}
                                 </div>
